@@ -1,0 +1,8 @@
+packages:
+  # зеркало оракула (ADR 047 зоны): shared/* builders/* cli — 2 уровня, web/<zone>/<pkg> — 3
+  - packages/*/*
+  - packages/web/*/*
+
+# pnpm 10 блокирует postinstall-скрипты по умолчанию; разрешаем точечно.
+onlyBuiltDependencies:
+  - esbuild
