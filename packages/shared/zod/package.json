@@ -1,0 +1,45 @@
+{
+  "name": "@omnifield/shared-zod",
+  "version": "0.1.1",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    },
+    "./gen": {
+      "types": "./dist/gen/index.d.ts",
+      "import": "./dist/gen.mjs",
+      "default": "./dist/gen.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "biome check src"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.0.0"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.9.12",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@omnifield/lib-builder": "workspace:*",
+    "vitest": "~4.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "packageManager": "pnpm"
+  }
+}
