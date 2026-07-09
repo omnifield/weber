@@ -1,0 +1,20 @@
+{
+  "name": "@weber/biome-config",
+  "version": "0.0.10",
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "packageManager": "pnpm"
+  },
+  "exports": {
+    "./biome.json": "./biome.json"
+  },
+  "files": [
+    "biome.json"
+  ],
+  "nx": {
+    "tags": [
+      "type:config"
+    ]
+  }
+}
