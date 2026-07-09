@@ -1,0 +1,13 @@
+/* Все темы. Каждая обёрнута в [data-theme="<name>"], применяется тогда,
+   когда на <html> или родительском элементе выставлен соответствующий атрибут. */
+@import "./black.css";
+@import "./damon.css";
+@import "./deepPurple.css";
+@import "./lightGreen.css";
+@import "./minimalNeutral.css";
+@import "./openprofile.css";
+@import "./pasteelement.css";
+@import "./shopifyRed.css";
+@import "./tiesen.css";
+@import "./vescrow.css";
+@import "./zen.css";
