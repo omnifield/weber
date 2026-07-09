@@ -77,6 +77,25 @@ importers:
         specifier: ~4.1.0
         version: 4.1.10(@types/node@25.9.0)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
 
+  packages/web/runtime/state:
+    dependencies:
+      es-toolkit:
+        specifier: ^1.46.0
+        version: 1.49.0
+      solid-js:
+        specifier: ^1.9.12
+        version: 1.9.14
+      xstate:
+        specifier: ^5.0.0
+        version: 5.32.4
+    devDependencies:
+      '@omnifield/lib-builder':
+        specifier: workspace:*
+        version: link:../../../builders/lib
+      vitest:
+        specifier: ~4.1.0
+        version: 4.1.10(@types/node@25.9.0)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+
 packages:
 
   '@babel/code-frame@7.29.7':
@@ -1418,6 +1437,9 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
+  xstate@5.32.4:
+    resolution: {integrity: sha512-E5WtDB8DBs2ZWliz2Ry9XfbSZTbBRcK/cwefBot04qQ/L5SLP16xpnTDU4/ZFXuXFhNxi7JP2RhuoGwBnM+S4A==}
+
   y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
     engines: {node: '>=10'}
@@ -2732,6 +2754,8 @@ snapshots:
       strip-ansi: 6.0.1
 
   wrappy@1.0.2: {}
+
+  xstate@5.32.4: {}
 
   y18n@5.0.8: {}
 
