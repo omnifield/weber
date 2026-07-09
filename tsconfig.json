@@ -4,5 +4,5 @@
     "composite": false
   },
   "files": [],
-  "references": [{ "path": "./packages/lib-builder" }]
+  "references": [{ "path": "./tools/lib-builder" }]
 }

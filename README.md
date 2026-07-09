@@ -14,8 +14,15 @@ Web-фреймворк экосистемы Omnifield. Пакеты — `@weber/
 (`docs/_meta/migration/` оракула) — не copy-paste. Первый экземпляр повторяющегося
 паттерна = эталон для остальных.
 
-**Раскладка:** `packages/<имя>` (плоско). Канон/стандарты — `omnifield/knowledger`.
-Roadmap — https://github.com/orgs/omnifield/projects/1
+**Раскладка (кор и пакеты не смешиваются):**
+
+```
+core/       # меха: @weber/core (+мосты, +инфра-плагины — по мере итераций)
+packages/   # standalone Solid-пакеты (state, router, query, dnd, …)
+tools/      # generic-инструменты (lib-builder, biome-config, позже compliance/builder)
+```
+
+Канон/стандарты — `omnifield/knowledger`. Roadmap — https://github.com/orgs/omnifield/projects/1
 
 ## Dev
 

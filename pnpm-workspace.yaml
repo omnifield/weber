@@ -1,5 +1,8 @@
 packages:
-  - packages/*
+  # три яруса (модель двух слоёв + инструменты):
+  - core/*      # HCA-меха: core (+мосты, +инфра-плагины — по мере итераций)
+  - packages/*  # standalone Solid-пакеты (state, router, query, dnd, …)
+  - tools/*     # generic-инструменты (lib-builder, biome-config, позже compliance/builder)
 
 # pnpm 10 блокирует postinstall-скрипты по умолчанию; разрешаем точечно.
 onlyBuiltDependencies:

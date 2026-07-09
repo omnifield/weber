@@ -13,10 +13,10 @@ Zero-deps leaf пакет, предоставляющий `libConfig()` — Vite
 ## Зона ответственности
 
 ### Owns
-- `packages/lib-builder/src/libConfig.ts` — вся логика: external selector, `emitDistPackageJsonPlugin`, `cleanRootPkgForDist`
-- `packages/lib-builder/src/__tests__/libConfig.test.ts` — характеризационные тесты (S-3 регрессия)
-- `packages/lib-builder/vite.config.mts` — self-build конфиг
-- `packages/lib-builder/package.json` exports / deps
+- `tools/lib-builder/src/libConfig.ts` — вся логика: external selector, `emitDistPackageJsonPlugin`, `cleanRootPkgForDist`
+- `tools/lib-builder/src/__tests__/libConfig.test.ts` — характеризационные тесты (S-3 регрессия)
+- `tools/lib-builder/vite.config.mts` — self-build конфиг
+- `tools/lib-builder/package.json` exports / deps
 
 ### Не трогает
 - `packages/builders/vite/` — потребитель libConfig, не наш код
