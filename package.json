@@ -1,0 +1,28 @@
+{
+  "name": "weber",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Omnifield Weber — web framework (@weber/*): HCA core (mecha) + standalone Solid packages",
+  "packageManager": "pnpm@10.11.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test",
+    "typecheck": "nx run-many -t typecheck",
+    "lint": "nx run-many -t lint",
+    "affected": "nx affected -t lint,typecheck,test,build",
+    "hygiene": "sherif"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.3",
+    "@nx/js": "^23.0.1",
+    "husky": "^9.1.7",
+    "nx": "^23.0.1",
+    "sherif": "^1.13.0",
+    "typescript": "^5.9.3"
+  }
+}
