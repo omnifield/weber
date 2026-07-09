@@ -1,1 +1,0 @@
-{"root":["./src/autoscroll.ts","./src/context.tsx","./src/draggable.ts","./src/droppable.ts","./src/index.ts","./src/overlay.tsx","./src/sortable.ts","./src/types.ts","./src/__tests__/provider-cleanup.test.tsx","./vite.config.mts","./vitest.config.ts"],"version":"5.9.3"}
