@@ -1,0 +1,15 @@
+{
+  "name": "@omnifield/web-dnd",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/web/runtime/dnd/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {},
+  "release": {
+    "version": {
+      "manifestRootsToUpdate": ["{projectRoot}"],
+      "currentVersionResolver": "git-tag",
+      "fallbackCurrentVersionResolver": "disk"
+    }
+  }
+}
