@@ -7,6 +7,8 @@
   "references": [
     { "path": "./tools/lib-builder" },
     { "path": "./core/kernel" },
-    { "path": "./core/ui-proxy" }
+    { "path": "./core/ui-proxy" },
+    { "path": "./core/logic" },
+    { "path": "./packages/state" }
   ]
 }
