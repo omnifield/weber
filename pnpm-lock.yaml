@@ -33,6 +33,46 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  core/engine:
+    dependencies:
+      '@weber/kernel':
+        specifier: workspace:*
+        version: link:../kernel
+      '@weber/logic':
+        specifier: workspace:*
+        version: link:../logic
+      '@weber/ui-proxy':
+        specifier: workspace:*
+        version: link:../ui-proxy
+    devDependencies:
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
+      '@weber/lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
+      '@weber/state':
+        specifier: workspace:*
+        version: link:../../packages/state
+      jsdom:
+        specifier: ~29.1.1
+        version: 29.1.1
+      solid-js:
+        specifier: ^1.9.12
+        version: 1.9.14
+      vite:
+        specifier: ^8.0.13
+        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+      vite-plugin-solid:
+        specifier: ^2.11.12
+        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+      vitest:
+        specifier: ~4.1.0
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+
   core/kernel:
     devDependencies:
       '@types/node':
@@ -2393,6 +2433,9 @@ packages:
     resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
     engines: {node: '>=12'}
 
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
 snapshots:
 
   '@asamuzakjp/css-color@5.1.11':
@@ -4750,3 +4793,5 @@ snapshots:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 21.1.1
+
+  zod@3.25.76: {}

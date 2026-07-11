@@ -9,6 +9,7 @@
     { "path": "./core/kernel" },
     { "path": "./core/ui-proxy" },
     { "path": "./core/logic" },
+    { "path": "./core/engine" },
     { "path": "./packages/state" }
   ]
 }
