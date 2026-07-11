@@ -1,38 +1,14 @@
-# NOTE: in-repo копия. Уезжает в reusable workflow devopser'а
-# (briefs/repo-skeleton-product.md D1) — caller останется 5-строчным.
 name: CI
-
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
-# Урезанный дефолт-токен: nx-set-shas читает Actions API (последний зелёный run на main).
-permissions:
-  contents: read
-  actions: read
-
+# Reusable не может расширить права сам. Явный permissions-блок ОБНУЛЯЕТ
+# неперечисленное: actions:read — иначе падает nx-set-shas; packages:read —
+# иначе 403 на @omnifield-пакетах ДАЖЕ публичных (грабля brainer П8).
+permissions: { contents: read, actions: read, packages: read }
 jobs:
   node:
-    name: Node (hygiene + nx affected lint/typecheck/test/build)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          # nx affected needs history to diff against the base branch.
-          fetch-depth: 0
-      # Версия pnpm — из packageManager root package.json (пин, toolchain-pins).
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm sherif
-      - uses: nrwl/nx-set-shas@v4
-      - run: pnpm nx affected -t lint,typecheck,test,build
+    uses: omnifield/devopser/.github/workflows/node-ci.yml@main
