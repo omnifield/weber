@@ -14,6 +14,12 @@ importers:
       '@nx/js':
         specifier: ^23.0.1
         version: 23.0.1(@babel/traverse@7.29.7)(nx@23.0.1)
+      '@omnifield/biome-preset':
+        specifier: ^0.1.1
+        version: 0.1.1
+      '@omnifield/nx-preset':
+        specifier: ^0.1.1
+        version: 0.1.1
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -768,6 +774,12 @@ packages:
 
   '@nx/workspace@23.0.1':
     resolution: {integrity: sha512-VdbvMTSEzp3ONZwiy83XEu8ktykC8aEI7M4mqKs5RNKHBFg3jtao2NFo3wDqHqnn1q9Fdaj8EbyUn08BUR5L3w==}
+
+  '@omnifield/biome-preset@0.1.1':
+    resolution: {integrity: sha512-QvUY3puHngrYEW7HtVc0pWpek70qfksuebROY3JEOURh8Z2HgJK9UdyzZdeiXKZuLy7UqLZg7prcbfLc2dVZUw==, tarball: https://npm.pkg.github.com/download/@omnifield/biome-preset/0.1.1/6aa7022388fca36645c59148cda8de7b46675066}
+
+  '@omnifield/nx-preset@0.1.1':
+    resolution: {integrity: sha512-OxWqkAF6Rzs2X/2zSUbMTNOq4axy2eG5GhzzXYpcVp9CTApf7axpPlDl8Iu5eBvBb+L0Zs4drUce9UFivVozcQ==, tarball: https://npm.pkg.github.com/download/@omnifield/nx-preset/0.1.1/2b364e0b2d71a58780573db787bea2ecd4022074}
 
   '@oxc-project/types@0.139.0':
     resolution: {integrity: sha512-r9gHphtCs+1M7J0pw6Sn/hh/Wpa/iQrOOkrNAlVLF/gHq+/CJmHIWKKUUhdWjcD6CIa8idarspCsASiXCXvFUw==}
@@ -3028,6 +3040,10 @@ snapshots:
       - '@swc-node/register'
       - '@swc/core'
       - debug
+
+  '@omnifield/biome-preset@0.1.1': {}
+
+  '@omnifield/nx-preset@0.1.1': {}
 
   '@oxc-project/types@0.139.0': {}
 

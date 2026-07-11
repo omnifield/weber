@@ -8,7 +8,7 @@
       "performance": {
         "noDelete": "off"
       },
-      "recommended": true,
+      "preset": "recommended",
       "complexity": {
         "noForEach": "off",
         "useArrowFunction": "error",

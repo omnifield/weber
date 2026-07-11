@@ -8,8 +8,8 @@
 // в конце печатает residual-строки с "capsule" (регистронезависимо) — они требуют ручного
 // решения (проза/конвенции), молча не пропускаются.
 
-import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
-import { join, extname } from 'node:path';
+import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { extname, join } from 'node:path';
 import { argv, exit } from 'node:process';
 
 const BASE_MAP = [
@@ -18,7 +18,20 @@ const BASE_MAP = [
   ['capsule:', 'weber:'], // префикс vite-плагинов (напр. capsule:emit-dist-package-json)
 ];
 
-const TEXT_EXT = new Set(['.ts', '.tsx', '.mts', '.cts', '.js', '.mjs', '.json', '.md', '.css', '.html', '.yml', '.yaml']);
+const TEXT_EXT = new Set([
+  '.ts',
+  '.tsx',
+  '.mts',
+  '.cts',
+  '.js',
+  '.mjs',
+  '.json',
+  '.md',
+  '.css',
+  '.html',
+  '.yml',
+  '.yaml',
+]);
 const SKIP_DIRS = new Set(['node_modules', 'dist', 'out-tsc', '.nx', 'coverage']);
 
 const dir = argv[2];
@@ -54,7 +67,9 @@ for (const f of files) {
     changed++;
   }
 }
-console.log(`renamed: ${changed}/${files.length} files (map: ${map.map(([a, b]) => `${a}→${b}`).join(', ')})`);
+console.log(
+  `renamed: ${changed}/${files.length} files (map: ${map.map(([a, b]) => `${a}→${b}`).join(', ')})`,
+);
 
 // Residual-скан: всё, что осталось с "capsule", — на ручное решение.
 let residual = 0;
@@ -67,4 +82,6 @@ for (const f of files) {
     }
   });
 }
-console.log(residual ? `⚠️ residual: ${residual} строк — реши руками (проза/конвенции)` : '✅ residual: 0');
+console.log(
+  residual ? `⚠️ residual: ${residual} строк — реши руками (проза/конвенции)` : '✅ residual: 0',
+);
