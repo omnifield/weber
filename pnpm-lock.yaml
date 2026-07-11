@@ -57,6 +57,34 @@ importers:
         specifier: ~4.1.0
         version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
 
+  core/logic:
+    dependencies:
+      '@weber/kernel':
+        specifier: workspace:*
+        version: link:../kernel
+    devDependencies:
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
+      '@weber/lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
+      jsdom:
+        specifier: ~29.1.1
+        version: 29.1.1
+      solid-js:
+        specifier: ^1.9.12
+        version: 1.9.14
+      vite:
+        specifier: ^8.0.13
+        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+      vite-plugin-solid:
+        specifier: ^2.11.12
+        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+      vitest:
+        specifier: ~4.1.0
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+
   core/ui-proxy:
     dependencies:
       '@weber/kernel':
@@ -72,6 +100,31 @@ importers:
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
+      solid-js:
+        specifier: ^1.9.12
+        version: 1.9.14
+      vite:
+        specifier: ^8.0.13
+        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+      vite-plugin-solid:
+        specifier: ^2.11.12
+        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+      vitest:
+        specifier: ~4.1.0
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+
+  packages/state:
+    dependencies:
+      '@weber/kernel':
+        specifier: workspace:*
+        version: link:../../core/kernel
+    devDependencies:
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
+      '@weber/lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
       solid-js:
         specifier: ^1.9.12
         version: 1.9.14

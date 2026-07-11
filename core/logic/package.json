@@ -1,0 +1,50 @@
+{
+  "name": "@weber/logic",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Weber core module: logic layer — schema-driven dispatch (ControllerProxy), lifecycle, emit, tag-queries over the state port",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --build",
+    "lint": "biome check src"
+  },
+  "dependencies": {
+    "@weber/kernel": "workspace:*"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.9.0",
+    "@weber/lib-builder": "workspace:*",
+    "jsdom": "~29.1.1",
+    "solid-js": "^1.9.12",
+    "vite": "^8.0.13",
+    "vite-plugin-solid": "^2.11.12",
+    "vitest": "~4.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "packageManager": "pnpm"
+  },
+  "nx": {
+    "tags": [
+      "type:core"
+    ]
+  }
+}
