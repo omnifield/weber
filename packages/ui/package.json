@@ -1,0 +1,53 @@
+{
+  "name": "@weber/ui",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Weber UI kit — stateless primitives + kit bundle contract (components, conventions, manifests). No storybook: showcase lives in studio",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --build",
+    "lint": "biome check src"
+  },
+  "dependencies": {
+    "@kobalte/core": "^0.13.12",
+    "@weber/style": "workspace:*"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.9.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "25.9.0",
+    "@weber/lib-builder": "workspace:*",
+    "jsdom": "~29.1.1",
+    "solid-js": "^1.9.12",
+    "vite": "^8.0.13",
+    "vite-plugin-solid": "^2.11.12",
+    "vitest": "~4.1.0",
+    "zod": "^3.23.8"
+  },
+  "publishConfig": {
+    "access": "public",
+    "packageManager": "pnpm"
+  },
+  "nx": {
+    "tags": [
+      "type:package"
+    ]
+  }
+}
