@@ -1,0 +1,457 @@
+/* @weber/style base — порт index.css предка (fix-then-transfer).
+   НЕ портировано: 7 fontsource-импортов (шрифты приносит апп/тема),
+   view-transitions (router-волна, ADR 046 предка), atmosphere/finish
+   (непрофильный switcher). Значения токенов приходят из themes.css
+   (дефолт light/dark) либо из зарегистрированных палитр — здесь только
+   алиасы и theme-independent шкалы. */
+
+@custom-variant dark (&:is(.dark *));
+
+/* Tailwind-утилиты → CSS-переменные активной темы (никаких hardcoded цветов). */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-3xl: var(--radius-3xl);
+  --radius-full: var(--radius-full);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  --color-status: var(--current-status);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --spacing: var(--spacing);
+  --spacing-slot: var(--size-slot);
+
+  --spacing-cell-tight: var(--space-cell-tight);
+  --spacing-cell: var(--space-cell);
+  --spacing-cell-loose: var(--space-cell-loose);
+  --spacing-button-sm: var(--space-button-sm);
+  --spacing-button: var(--space-button);
+  --spacing-button-lg: var(--space-button-lg);
+  --spacing-input: var(--space-input);
+  --spacing-field: var(--space-field);
+  --spacing-card: var(--space-card);
+  --spacing-card-tight: var(--space-card-tight);
+  --spacing-section: var(--space-section);
+  --spacing-layout: var(--space-layout);
+  --spacing-component: var(--space-component);
+  --spacing-tight: var(--space-tight);
+
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-base);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
+
+  --leading-none: var(--leading-none);
+  --leading-tight: var(--leading-tight);
+  --leading-snug: var(--leading-snug);
+  --leading-normal: var(--leading-normal);
+  --leading-relaxed: var(--leading-relaxed);
+  --leading-loose: var(--leading-loose);
+
+  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+  --tracking-normal: var(--tracking-normal);
+  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+
+  --ease-linear: var(--ease-linear);
+  --ease-in: var(--ease-in);
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
+  --ease-spring: var(--ease-spring);
+  --ease-bounce: var(--ease-bounce);
+
+  --gradient-primary: linear-gradient(to right, oklch(0.7 0.2 340), oklch(0.5 0.2 250));
+  --gradient-accent: linear-gradient(to bottom right, var(--primary), var(--accent));
+
+  --animate-pulse-subtle: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================================================
+   Theme-independent шкалы (density-aware). Компоненты ссылаются на
+   семантические токены, не на сырую шкалу.
+   ============================================================================ */
+:root {
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  --density: 1;
+
+  --space-cell-tight: calc(var(--space-2) * var(--density));
+  --space-cell: calc(var(--space-3) * var(--density));
+  --space-cell-loose: calc(var(--space-4) * var(--density));
+
+  --space-button-sm: calc(var(--space-2) * var(--density));
+  --space-button: calc(var(--space-3) * var(--density));
+  --space-button-lg: calc(var(--space-4) * var(--density));
+
+  --space-input: calc(var(--space-3) * var(--density));
+  --space-field: calc(var(--space-2) * var(--density));
+
+  --space-card: calc(var(--space-5) * var(--density));
+  --space-card-tight: calc(var(--space-4) * var(--density));
+
+  --space-section: calc(var(--space-6) * var(--density));
+  --space-layout: calc(var(--space-4) * var(--density));
+  --space-component: calc(var(--space-3) * var(--density));
+  --space-tight: calc(var(--space-2) * var(--density));
+
+  --size-slot: calc(var(--space-7) * var(--density));
+
+  --spacing: 0.25rem;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  --leading-none: 1;
+  --leading-tight: 1.2;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+  --leading-loose: 2;
+
+  --tracking-normal: 0em;
+
+  --radius: 0.5rem;
+  --radius-xs: calc(var(--radius) - 6px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+  --radius-full: 9999px;
+
+  --motion-instant: 75ms;
+  --motion-fast: 200ms;
+  --motion-normal: 320ms;
+  --motion-slow: 400ms;
+  --motion-slower: 600ms;
+
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.5, 1.25, 0.75, 1.25);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --transition-colors:
+    color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out),
+    border-color var(--motion-fast) var(--ease-out);
+  --transition-opacity: opacity var(--motion-fast) var(--ease-out);
+  --transition-transform: transform var(--motion-normal) var(--ease-out);
+  --transition-shadow: box-shadow var(--motion-fast) var(--ease-out);
+  --transition-all: all var(--motion-normal) var(--ease-out);
+
+  --scrollbar-size: 6px;
+  --scrollbar-thumb: var(--border);
+  --scrollbar-thumb-hover: var(--muted-foreground);
+  --scrollbar-track: transparent;
+
+  --transition-ui: var(--transition-all);
+
+  --success: oklch(0.627 0.194 149.214);
+  --success-foreground: oklch(0.985 0 0);
+  --warning: oklch(0.769 0.188 70.08);
+  --warning-foreground: oklch(0.145 0 0);
+  --current-status: inherit;
+}
+
+.compact {
+  --density: 0.75;
+}
+
+.comfortable {
+  --density: 1.25;
+}
+
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Popover / Dropdown / Tooltip enter+exit (Kobalte data-expanded/data-closed). */
+@keyframes popover-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes popover-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+  }
+}
+
+.popover-animate {
+  transform-origin: top center;
+}
+
+.popover-animate[data-expanded] {
+  animation: popover-in 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popover-animate[data-closed] {
+  animation: popover-out 120ms ease-in;
+}
+
+/* Select: auto-height unfold (grid-rows trick). */
+@keyframes select-unfold {
+  from {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+  to {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
+@keyframes select-fold {
+  from {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+  to {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+}
+
+.select-content-animate {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.select-content-animate > * {
+  min-height: 0;
+}
+
+.select-content-animate[data-expanded] {
+  animation: select-unfold 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.select-content-animate[data-closed] {
+  animation: select-fold 130ms ease-in;
+}
+
+/* Accordion expand/collapse — grid-rows trick. */
+@keyframes accordion-expand {
+  from {
+    grid-template-rows: 0fr;
+  }
+  to {
+    grid-template-rows: 1fr;
+  }
+}
+
+@keyframes accordion-collapse {
+  from {
+    grid-template-rows: 1fr;
+  }
+  to {
+    grid-template-rows: 0fr;
+  }
+}
+
+.accordion-animate {
+  display: grid;
+  overflow: hidden;
+}
+
+.accordion-animate[data-expanded] {
+  animation: accordion-expand 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  grid-template-rows: 1fr;
+}
+
+.accordion-animate[data-closed] {
+  animation: accordion-collapse 200ms ease-in;
+  grid-template-rows: 0fr;
+}
+
+/* Scrollbar — theme-aware, cross-browser. */
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: content-box;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+* {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  :root.dark,
+  .dark {
+    color-scheme: dark;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--foreground) !important;
+    box-shadow: 0 0 100px 100px var(--background) inset !important;
+    transition: background-color 900000000s ease-in-out 900000000s !important;
+    caret-color: var(--foreground) !important;
+  }
+
+  *,
+  ::after,
+  ::before {
+    box-sizing: border-box;
+    border-color: var(--border);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    line-height: inherit;
+    letter-spacing: var(--tracking-normal, 0em);
+    font-family: var(
+      --font-sans,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif
+    );
+  }
+
+  button,
+  input,
+  a {
+    transition: var(--transition-ui) !important;
+  }
+}
+
+@layer components {
+  .has-status {
+    background-color: var(--current-status) !important;
+    border-color: var(--current-status) !important;
+    color: white !important;
+    transition: var(--transition-ui) !important;
+  }
+}
+
+.has-status:hover {
+  filter: brightness(0.6);
+}

@@ -10,6 +10,8 @@
     { "path": "./core/ui-proxy" },
     { "path": "./core/logic" },
     { "path": "./core/engine" },
-    { "path": "./packages/state" }
+    { "path": "./packages/state" },
+    { "path": "./packages/style" },
+    { "path": "./packages/ui" }
   ]
 }
