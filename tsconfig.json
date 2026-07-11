@@ -4,5 +4,9 @@
     "composite": false
   },
   "files": [],
-  "references": [{ "path": "./tools/lib-builder" }]
+  "references": [
+    { "path": "./tools/lib-builder" },
+    { "path": "./core/kernel" },
+    { "path": "./core/ui-proxy" }
+  ]
 }
