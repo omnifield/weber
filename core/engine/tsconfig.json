@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc",
+    "emitDeclarationOnly": true,
+    "types": ["node"]
+  },
+  "include": ["src", "vite.config.mts", "vitest.config.ts"],
+  "references": [
+    { "path": "../kernel" },
+    { "path": "../ui-proxy" },
+    { "path": "../logic" },
+    { "path": "../../packages/state" }
+  ]
+}
