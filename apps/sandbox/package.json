@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@weber/vite": "workspace:*",
-    "typescript": "~5.9.3",
+    "typescript": "^5.9.3",
     "vite": "^8.0.13"
   },
   "nx": {
