@@ -18,6 +18,8 @@
 
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, posix, relative, resolve, sep } from 'node:path';
+import type { IDtsMapping } from './declaration-map';
+import { buildSourceMap, findDeclPosition } from './declaration-map';
 import { toPascal } from './naming';
 
 export const LAYERS = [
@@ -142,68 +144,89 @@ export const generateRegistryFiles = (appRoot: string): Map<string, string> => {
 };
 
 /**
- * Генерит `.weber/globals.d.ts` — ЕДИНСТВЕННЫЙ источник ТИПОВ глобалов
- * (форма CapsuleSlots предка, проверенная в WebStorm): каждый leaf реестра
- * типизирован ПРЯМЫМ `typeof import('<файл-источник>')` — Ctrl+Click ведёт
- * в файл без barrel-хопов (named re-export через два бареля WebStorm не
- * проходит — находка user, раунд 2). unimport при этом — ТОЛЬКО runtime-инжект
- * (его dts выключен в defineWeberApp).
+ * Генерит `.weber/globals.d.ts` + DECLARATION MAP (`globals.d.ts.map`) —
+ * ЕДИНСТВЕННЫЙ источник ТИПОВ глобалов. Каждый leaf типизирован прямым
+ * `typeof import('<файл-источник>')`, а карта редиректит Go-to-Definition
+ * из декларации ПРЯМО в строку `export const X` источника (механизм
+ * declarationMap «взрослых» либ — находка-раунды user 2026-07-12: и барели,
+ * и голый d.ts дают лишний хоп; карта убирает его). unimport — ТОЛЬКО
+ * runtime-инжект (dts выключен в defineWeberApp).
  */
-export const generateGlobalsDts = (appRoot: string): string => {
+export const generateGlobalsArtifacts = (appRoot: string): { dts: string; map: string } => {
   const srcDir = resolve(appRoot, 'src');
   const weberDir = resolve(appRoot, '.weber');
 
-  const emitNode = (node: TreeNode, indent: string): string => {
-    const lines: string[] = [];
+  const lines: string[] = [];
+  const mappings: IDtsMapping[] = [];
+  const push = (line: string) => lines.push(line);
+
+  const emitNode = (node: TreeNode, indent: string): void => {
     for (const dirName of [...node.dirs.keys()].sort()) {
-      lines.push(`${indent}readonly ${toPascal(dirName)}: {`);
-      lines.push(emitNode(node.dirs.get(dirName) as TreeNode, `${indent}  `));
-      lines.push(`${indent}};`);
+      push(`${indent}readonly ${toPascal(dirName)}: {`);
+      emitNode(node.dirs.get(dirName) as TreeNode, `${indent}  `);
+      push(`${indent}};`);
     }
     for (const fileName of [...node.leaves.keys()].sort()) {
       const abs = node.leaves.get(fileName) as string;
       const name = toPascal(fileName);
       const spec = importSpecifier(weberDir, abs);
-      const member = hasNamedExport(readFileSync(abs, 'utf8'), name) ? name : 'default';
-      lines.push(`${indent}readonly ${name}: (typeof import('${spec}'))['${member}'];`);
+      const source = readFileSync(abs, 'utf8');
+      const member = hasNamedExport(source, name) ? name : 'default';
+      const pos = findDeclPosition(source, name);
+      mappings.push({
+        generatedLine: lines.length,
+        generatedColumn: indent.length + 'readonly '.length,
+        // sources в карте — С расширением (реальный файл), не import-спецификатор.
+        source: toPosix(relative(weberDir, abs)),
+        sourceLine: pos.line,
+        sourceColumn: pos.column,
+      });
+      push(`${indent}readonly ${name}: (typeof import('${spec}'))['${member}'];`);
     }
-    return lines.join('\n');
   };
 
-  const registryDecls: string[] = [];
-  for (const layer of LAYERS) {
-    const ns = layerNamespace(layer);
-    const layerDir = resolve(srcDir, layer);
-    const tree = existsSync(layerDir) ? scanDir(layerDir) : emptyNode();
-    if (!tree.dirs.size && !tree.leaves.size) {
-      registryDecls.push(`  const ${ns}: Record<string, never>;`);
-      continue;
+  const emitRegistry = (): void => {
+    for (const layer of LAYERS) {
+      const ns = layerNamespace(layer);
+      const layerDir = resolve(srcDir, layer);
+      const tree = existsSync(layerDir) ? scanDir(layerDir) : emptyNode();
+      if (!tree.dirs.size && !tree.leaves.size) {
+        push(`  const ${ns}: Record<string, never>;`);
+        continue;
+      }
+      push(`  const ${ns}: {`);
+      emitNode(tree, '    ');
+      push('  };');
     }
-    registryDecls.push(`  const ${ns}: {`);
-    registryDecls.push(emitNode(tree, '    '));
-    registryDecls.push('  };');
-  }
+  };
 
   const wrapperDecls = ['Entity', 'View', 'Shape', 'Widget', 'Page', 'Controller', 'Feature'].map(
     (n) => `  const ${n}: (typeof import('@weber-app/engine'))['${n}'];`,
   );
 
-  return [
-    HEADER,
-    'export {};',
-    'declare global {',
-    ...wrapperDecls,
-    "  const useCtx: (typeof import('@weber/kernel'))['useCtx'];",
-    "  const useCompositeWrap: (typeof import('@weber/kernel'))['useCompositeWrap'];",
-    "  const useEmit: (typeof import('@weber/logic'))['useEmit'];",
-    "  const useEmitOptional: (typeof import('@weber/logic'))['useEmitOptional'];",
-    ...registryDecls,
-    '}',
-    '',
-  ].join('\n');
+  // HEADER содержит свой \n — в построчной сборке карта съехала бы на строку.
+  for (const l of [HEADER.trimEnd(), 'export {};', 'declare global {']) push(l);
+  for (const l of wrapperDecls) push(l);
+  push("  const useCtx: (typeof import('@weber/kernel'))['useCtx'];");
+  push("  const useCompositeWrap: (typeof import('@weber/kernel'))['useCompositeWrap'];");
+  push("  const useEmit: (typeof import('@weber/logic'))['useEmit'];");
+  push("  const useEmitOptional: (typeof import('@weber/logic'))['useEmitOptional'];");
+  emitRegistry();
+  push('}');
+  push('//# sourceMappingURL=globals.d.ts.map');
+  push('');
+
+  return {
+    dts: lines.join('\n'),
+    map: buildSourceMap('globals.d.ts', mappings, lines.length),
+  };
 };
 
-/** Пишет барели + globals.d.ts на диск (перезапись только при изменении). */
+/** Совместимость: только текст d.ts. */
+export const generateGlobalsDts = (appRoot: string): string =>
+  generateGlobalsArtifacts(appRoot).dts;
+
+/** Пишет барели + globals.d.ts(+map) на диск (перезапись только при изменении). */
 export const writeRegistry = (appRoot: string): string[] => {
   const registryDir = resolve(appRoot, '.weber', 'registry');
   const files = generateRegistryFiles(appRoot);
@@ -217,6 +240,8 @@ export const writeRegistry = (appRoot: string): string[] => {
   for (const [rel, content] of files) {
     writeIfChanged(resolve(registryDir, rel), content);
   }
-  writeIfChanged(resolve(appRoot, '.weber', 'globals.d.ts'), generateGlobalsDts(appRoot));
+  const globals = generateGlobalsArtifacts(appRoot);
+  writeIfChanged(resolve(appRoot, '.weber', 'globals.d.ts'), globals.dts);
+  writeIfChanged(resolve(appRoot, '.weber', 'globals.d.ts.map'), globals.map);
   return written;
 };
