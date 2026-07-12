@@ -1,5 +1,5 @@
 // Слой БЕЗ импортов: View/useCtx — глобалы.
-const CounterView = View((Ui: any) => {
+export const Counter = View((Ui: any) => {
   const ctx = useCtx<{ count: number }>();
   return (
     <section>
@@ -9,4 +9,4 @@ const CounterView = View((Ui: any) => {
   );
 });
 
-export default CounterView;
+export default Counter;

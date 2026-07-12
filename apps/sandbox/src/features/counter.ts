@@ -1,5 +1,5 @@
 // Слой БЕЗ импортов: Feature + Entities — глобалы (engine + registry-барели).
-const CounterFeature = Feature(() => ({
+export const Counter = Feature(() => ({
   initial: 'idle',
   context: { ...(Entities.Counter.defaults as object) },
   states: {
@@ -11,4 +11,4 @@ const CounterFeature = Feature(() => ({
   },
 }));
 
-export default CounterFeature;
+export default Counter;

@@ -17,7 +17,9 @@ IMAGE=ghcr.io/omnifield/devbox:v2026.07.10
 WORKSPACE="$(cd "$(dirname "$0")/.." && pwd)"
 
 if ! docker inspect "$NAME" >/dev/null 2>&1; then
+  # 5173 — runtime-порт sandbox-полигона (apps/sandbox, vite dev --host).
   docker run -d --name "$NAME" \
+    -p 5173:5173 \
     -v "$WORKSPACE:/workspaces/weber" -w /workspaces/weber \
     -v omnifield-secrets:/home/vscode/.secrets \
     -v omnifield-pnpm-store:/home/vscode/.local/share/pnpm/store \

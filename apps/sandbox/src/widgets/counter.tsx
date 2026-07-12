@@ -1,8 +1,8 @@
 // Слой БЕЗ импортов: Widget + реестры Features/Views — глобалы из барелей.
-const CounterWidget = Widget(() => (
+export const Counter = Widget(() => (
   <Features.Counter>
     <Views.Counter />
   </Features.Counter>
 ));
 
-export default CounterWidget;
+export default Counter;

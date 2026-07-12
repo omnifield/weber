@@ -32,20 +32,25 @@ describe('toPascal', () => {
 
 describe('generateRegistryFiles — barrel-кодген', () => {
   it('nested по папкам: leaf re-export + mid-барели + корневой index с registry-объектом', () => {
-    seed('src/views/hello.tsx');
+    // канон-файл: именованный экспорт = PascalCase имени файла → ИМЕНОВАННЫЙ
+    // ре-экспорт (прозрачная навигация); без именованного — default-алиас.
+    seed('src/views/hello.tsx', 'export const Hello = 1;\nexport default Hello;\n');
     seed('src/views/viewer/login-form.tsx');
-    seed('src/widgets/forms/auth.tsx');
+    seed('src/widgets/forms/auth.tsx', 'export const Auth = 1;\nexport default Auth;\n');
 
     const files = generateRegistryFiles(appRoot);
 
     const viewsIndex = files.get('views/index.ts') ?? '';
     expect(viewsIndex).toContain("export * as Viewer from './viewer';");
-    expect(viewsIndex).toContain("export { default as Hello } from '../../../src/views/hello';");
+    expect(viewsIndex).toContain("export { Hello } from '../../../src/views/hello';");
 
     const viewerIndex = files.get('views/viewer/index.ts') ?? '';
+    // fallback: файл только с default → default-алиас
     expect(viewerIndex).toContain(
       "export { default as LoginForm } from '../../../../src/views/viewer/login-form';",
     );
+    const widgetsForms = files.get('widgets/forms/index.ts') ?? '';
+    expect(widgetsForms).toContain('export { Auth } from');
 
     const root = files.get('index.ts') ?? '';
     expect(root).toContain("export * as Views from './views';");
