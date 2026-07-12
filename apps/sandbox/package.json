@@ -28,6 +28,14 @@
   "nx": {
     "tags": [
       "type:app"
-    ]
+    ],
+    "targets": {
+      "typecheck": {
+        "dependsOn": ["^build"]
+      },
+      "lint": {
+        "dependsOn": ["^build"]
+      }
+    }
   }
 }
