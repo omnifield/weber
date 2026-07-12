@@ -16,10 +16,8 @@
  * Выход: `.weber/registry/<layer>/…` + корневой `index.ts`.
  */
 
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join, posix, relative, resolve, sep } from 'node:path';
-import type { IDtsMapping } from './declaration-map';
-import { buildSourceMap, findDeclPosition } from './declaration-map';
 import { toPascal } from './naming';
 
 export const LAYERS = [
@@ -144,46 +142,21 @@ export const generateRegistryFiles = (appRoot: string): Map<string, string> => {
 };
 
 /**
- * Генерит `.weber/globals.d.ts` + DECLARATION MAP (`globals.d.ts.map`) —
- * ЕДИНСТВЕННЫЙ источник ТИПОВ глобалов. Каждый leaf типизирован прямым
- * `typeof import('<файл-источник>')`, а карта редиректит Go-to-Definition
- * из декларации ПРЯМО в строку `export const X` источника (механизм
- * declarationMap «взрослых» либ — находка-раунды user 2026-07-12: и барели,
- * и голый d.ts дают лишний хоп; карта убирает его). unimport — ТОЛЬКО
- * runtime-инжект (dts выключен в defineWeberApp).
+ * Генерит `.weber/globals.d.ts` — ЕДИНСТВЕННЫЙ источник ТИПОВ глобалов.
+ * Каждый слой типизирован `typeof import('./registry/<layer>')` поверх
+ * ОДНОСЛОЙНОГО registry-бареля (раунд-4 навигации, 2026-07-12): декларация
+ * leaf'а живёт НЕ в d.ts, а в бареле как pure named re-export — эта форма
+ * прозрачна для Go-to-Definition и в WebStorm (собственный резолвер IDE,
+ * d.ts.map не читает by design — раунд-3 откачен), и в tsserver-клиентах
+ * (TS следует export-алиасам до исходника). Раунды 1/2: два уровня барелей
+ * WebStorm НЕ проходит; per-leaf декларации в d.ts ловят GTD на себя.
+ * unimport — ТОЛЬКО runtime-инжект (dts выключен в defineWeberApp).
  */
-export const generateGlobalsArtifacts = (appRoot: string): { dts: string; map: string } => {
+export const generateGlobalsDts = (appRoot: string): string => {
   const srcDir = resolve(appRoot, 'src');
-  const weberDir = resolve(appRoot, '.weber');
 
   const lines: string[] = [];
-  const mappings: IDtsMapping[] = [];
   const push = (line: string) => lines.push(line);
-
-  const emitNode = (node: TreeNode, indent: string): void => {
-    for (const dirName of [...node.dirs.keys()].sort()) {
-      push(`${indent}readonly ${toPascal(dirName)}: {`);
-      emitNode(node.dirs.get(dirName) as TreeNode, `${indent}  `);
-      push(`${indent}};`);
-    }
-    for (const fileName of [...node.leaves.keys()].sort()) {
-      const abs = node.leaves.get(fileName) as string;
-      const name = toPascal(fileName);
-      const spec = importSpecifier(weberDir, abs);
-      const source = readFileSync(abs, 'utf8');
-      const member = hasNamedExport(source, name) ? name : 'default';
-      const pos = findDeclPosition(source, name);
-      mappings.push({
-        generatedLine: lines.length,
-        generatedColumn: indent.length + 'readonly '.length,
-        // sources в карте — С расширением (реальный файл), не import-спецификатор.
-        source: toPosix(relative(weberDir, abs)),
-        sourceLine: pos.line,
-        sourceColumn: pos.column,
-      });
-      push(`${indent}readonly ${name}: (typeof import('${spec}'))['${member}'];`);
-    }
-  };
 
   const emitRegistry = (): void => {
     for (const layer of LAYERS) {
@@ -194,9 +167,7 @@ export const generateGlobalsArtifacts = (appRoot: string): { dts: string; map: s
         push(`  const ${ns}: Record<string, never>;`);
         continue;
       }
-      push(`  const ${ns}: {`);
-      emitNode(tree, '    ');
-      push('  };');
+      push(`  const ${ns}: typeof import('./registry/${layer}');`);
     }
   };
 
@@ -204,7 +175,6 @@ export const generateGlobalsArtifacts = (appRoot: string): { dts: string; map: s
     (n) => `  const ${n}: (typeof import('@weber-app/engine'))['${n}'];`,
   );
 
-  // HEADER содержит свой \n — в построчной сборке карта съехала бы на строку.
   for (const l of [HEADER.trimEnd(), 'export {};', 'declare global {']) push(l);
   for (const l of wrapperDecls) push(l);
   push("  const useCtx: (typeof import('@weber/kernel'))['useCtx'];");
@@ -213,20 +183,12 @@ export const generateGlobalsArtifacts = (appRoot: string): { dts: string; map: s
   push("  const useEmitOptional: (typeof import('@weber/logic'))['useEmitOptional'];");
   emitRegistry();
   push('}');
-  push('//# sourceMappingURL=globals.d.ts.map');
   push('');
 
-  return {
-    dts: lines.join('\n'),
-    map: buildSourceMap('globals.d.ts', mappings, lines.length),
-  };
+  return lines.join('\n');
 };
 
-/** Совместимость: только текст d.ts. */
-export const generateGlobalsDts = (appRoot: string): string =>
-  generateGlobalsArtifacts(appRoot).dts;
-
-/** Пишет барели + globals.d.ts(+map) на диск (перезапись только при изменении). */
+/** Пишет барели + globals.d.ts на диск (перезапись только при изменении). */
 export const writeRegistry = (appRoot: string): string[] => {
   const registryDir = resolve(appRoot, '.weber', 'registry');
   const files = generateRegistryFiles(appRoot);
@@ -240,8 +202,8 @@ export const writeRegistry = (appRoot: string): string[] => {
   for (const [rel, content] of files) {
     writeIfChanged(resolve(registryDir, rel), content);
   }
-  const globals = generateGlobalsArtifacts(appRoot);
-  writeIfChanged(resolve(appRoot, '.weber', 'globals.d.ts'), globals.dts);
-  writeIfChanged(resolve(appRoot, '.weber', 'globals.d.ts.map'), globals.map);
+  writeIfChanged(resolve(appRoot, '.weber', 'globals.d.ts'), generateGlobalsDts(appRoot));
+  // Хвост раунда-3 (declaration map откачен): стирать stale-карту.
+  rmSync(resolve(appRoot, '.weber', 'globals.d.ts.map'), { force: true });
   return written;
 };

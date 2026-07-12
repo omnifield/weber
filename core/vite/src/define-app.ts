@@ -32,8 +32,8 @@ export const defineWeberApp = (options: IWeberAppOptions = {}): UserConfig => {
       weberRegistryPlugin({ appRoot: options.appRoot }),
       AutoImport({
         imports: buildAutoImports(options) as never,
-        // Типы глобалов — НАШ .weber/globals.d.ts (прямые typeof import в
-        // источники, WebStorm-навигация); unimport = только runtime-инжект.
+        // Типы глобалов — НАШ .weber/globals.d.ts (typeof import однослойных
+        // registry-барелей, WebStorm-навигация); unimport = только runtime-инжект.
         dts: false,
       }),
       ...((options.plugins as never[]) ?? []),
