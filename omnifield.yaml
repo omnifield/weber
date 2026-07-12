@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=<workspace-origin>/omnifield.schema.json
+# weber — тонкий product-manifest (контракт @omnifield/contract-manifest, omnifield.dev/v1).
+# reach.port = РЕАЛЬНЫЙ внутренний listening-порт (weber dev-server слушает 5173);
+# manifest.reach.port === реальный порт, иначе nginx-upstream хаба промахнётся.
+apiVersion: omnifield.dev/v1
+name: weber
+type: frontend
+title: Weber
+description: Веб-редактор карточек знаний
+reach:
+  routes:
+    - path: /weber
+      port: 5173
+integration:
+  deps: [brainer]   # ходит в brainer API
