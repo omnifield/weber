@@ -11,5 +11,5 @@
       "@weber-app/registry": ["./.weber/registry"]
     }
   },
-  "include": ["src", ".weber", ".weber/auto-imports.d.ts"]
+  "include": ["src", ".weber", ".weber/globals.d.ts"]
 }

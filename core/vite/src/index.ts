@@ -6,4 +6,11 @@ export { toPascal } from './naming';
 export type { IRegistryPluginOptions } from './plugin';
 export { weberRegistryPlugin } from './plugin';
 export type { Layer } from './registry';
-export { generateRegistryFiles, LAYERS, layerNamespace, writeRegistry } from './registry';
+export {
+  generateGlobalsDts,
+  generateRegistryFiles,
+  hasNamedExport,
+  LAYERS,
+  layerNamespace,
+  writeRegistry,
+} from './registry';
