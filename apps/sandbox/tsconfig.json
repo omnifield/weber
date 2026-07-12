@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "noEmit": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@weber-app/engine": ["./src/engine"],
+      "@weber-app/registry": ["./.weber/registry"]
+    }
+  },
+  "include": ["src", ".weber", ".weber/auto-imports.d.ts"]
+}

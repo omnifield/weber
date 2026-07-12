@@ -23,6 +23,13 @@
 
 Цель: >половины логики vite-builder предка не переносится вообще.
 
+*(Исполнено 2026-07-12, `@weber/vite`: registry barrel-кодген (форма ADR-034
+предка — настоящие ES-барели, навигация/типы честные) + unimport-глобалы через
+алиасы `@weber-app/engine`/`@weber-app/registry` + watch без ребута; реестр
+БЕЗ globalThis — данные для `engine.register`. Verification — apps/sandbox
+(канон «без импортов» в слоях, vite build = CI-гейт). Router-plugin — опцией
+с router-волной.)*
+
 ## Guardrail
 
 Если после пересадки на community-стек боли DX остаются — это сигнал о цене
