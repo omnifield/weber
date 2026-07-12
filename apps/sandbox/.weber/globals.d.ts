@@ -12,19 +12,10 @@ declare global {
   const useCompositeWrap: (typeof import('@weber/kernel'))['useCompositeWrap'];
   const useEmit: (typeof import('@weber/logic'))['useEmit'];
   const useEmitOptional: (typeof import('@weber/logic'))['useEmitOptional'];
-  const Views: {
-    readonly Counter: (typeof import('../src/views/counter'))['Counter'];
-  };
-  const Widgets: {
-    readonly Counter: (typeof import('../src/widgets/counter'))['Counter'];
-  };
-  const Entities: {
-    readonly Counter: (typeof import('../src/entities/counter'))['Counter'];
-  };
+  const Views: typeof import('./registry/views');
+  const Widgets: typeof import('./registry/widgets');
+  const Entities: typeof import('./registry/entities');
   const Controllers: Record<string, never>;
-  const Features: {
-    readonly Counter: (typeof import('../src/features/counter'))['Counter'];
-  };
+  const Features: typeof import('./registry/features');
   const Shapes: Record<string, never>;
 }
-//# sourceMappingURL=globals.d.ts.map
