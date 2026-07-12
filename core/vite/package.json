@@ -1,0 +1,48 @@
+{
+  "name": "@weber/vite",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Weber build-infra — defineWeberApp: registry barrel codegen (real modules, IDE navigation), unimport globals, solid",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --build",
+    "lint": "biome check src"
+  },
+  "dependencies": {
+    "unplugin-auto-import": "^20.2.0",
+    "vite-plugin-solid": "^2.11.12"
+  },
+  "peerDependencies": {
+    "vite": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.9.0",
+    "@weber/lib-builder": "workspace:*",
+    "vite": "^8.0.13",
+    "vitest": "~4.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "packageManager": "pnpm"
+  },
+  "nx": {
+    "tags": [
+      "type:core"
+    ]
+  }
+}
