@@ -1,4 +1,4 @@
-/* @weber/style base — порт index.css предка (fix-then-transfer).
+/* @omnifield/weber-style base — порт index.css предка (fix-then-transfer).
    НЕ портировано: 7 fontsource-импортов (шрифты приносит апп/тема),
    view-transitions (router-волна, ADR 046 предка), atmosphere/finish
    (непрофильный switcher). Значения токенов приходят из themes.css

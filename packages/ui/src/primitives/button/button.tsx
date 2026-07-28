@@ -1,4 +1,4 @@
-import { cn, createStyle } from '@weber/style';
+import { cn, createStyle } from '@omnifield/weber-style';
 import type { ValidComponent } from 'solid-js';
 import { mergeProps, Show, splitProps } from 'solid-js';
 import { Slot } from '../slot';

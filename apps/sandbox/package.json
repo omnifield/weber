@@ -11,17 +11,17 @@
     "lint": "biome check src"
   },
   "dependencies": {
-    "@weber/engine": "workspace:*",
-    "@weber/kernel": "workspace:*",
-    "@weber/logic": "workspace:*",
-    "@weber/state": "workspace:*",
-    "@weber/style": "workspace:*",
-    "@weber/ui": "workspace:*",
+    "@omnifield/weber-engine": "workspace:*",
+    "@omnifield/weber-kernel": "workspace:*",
+    "@omnifield/weber-logic": "workspace:*",
+    "@omnifield/weber-state": "workspace:*",
+    "@omnifield/weber-style": "workspace:*",
+    "@omnifield/weber-ui": "workspace:*",
     "solid-js": "^1.9.12",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@weber/vite": "workspace:*",
+    "@omnifield/weber-vite": "workspace:*",
     "typescript": "^5.9.3",
     "vite": "^8.0.13"
   },

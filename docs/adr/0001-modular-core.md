@@ -9,9 +9,9 @@
 
 Кор weber — **microkernel**: целостный движок, СОБИРАЕМЫЙ из модулей.
 
-1. **Kernel** (`@weber/kernel`) — тонкий: контракт модуля (`defineModule`,
+1. **Kernel** (`@omnifield/weber-kernel`) — тонкий: контракт модуля (`defineModule`,
    `IWeberModule`), порты, единый HCA runtime-контекст. Механик в kernel нет.
-2. **Модуль кора** (`core/<name>`, пакет `@weber/<name>`) — внутренняя механика
+2. **Модуль кора** (`core/<name>`, пакет `@omnifield/weber-<name>`) — внутренняя механика
    движка: интегрируется НАПРЯМУЮ (in-process, без адаптеров), наружу отдаёт
    только декларированный вход/выход: вход = конфиг/конвенции (мержатся поверх
    дефолтов), выход = typed API. Module-global state запрещён — инстансы
@@ -21,7 +21,7 @@
    (`packages/*`) реализуют адаптеры. Импорт реализации пакета внутри
    модуля невозможен by construction — у модуля есть только порт.
    Следствие решения user «web-state не в коре»: FSM-шов оформляется портом
-   при переносе logic-механики; `@weber/state` = первый адаптер
+   при переносе logic-механики; `@omnifield/weber-state` = первый адаптер
    (solid-native, дефолт — детали и диагноз предка в ADR-0003).
 
 ## Правила нарезки
@@ -35,14 +35,14 @@
   в mergeProps, не снапшоты).
 - **Сборка (engine assembly)** — НЕ проектируется заранее: появится со вторым
   модулем и обёртками, вырезанная по реальной потребности.
-  *(Исполнено в ит.1 шаг 3: `@weber/engine` = composition root — модули,
+  *(Исполнено в ит.1 шаг 3: `@omnifield/weber-engine` = composition root — модули,
   межмодульные связки, обёртки слоёв, реестр ПЕР-ENGINE без globalThis
   (решение user 2026-07-12, без переходных шимов; доставка «без импортов» —
   build-infra слой ADR-0002).)*
 
 ## Эталон модуля
 
-`@weber/ui-proxy` (первый вырез): kit-agnostic — конвенции (kindTags, events,
+`@omnifield/weber-ui-proxy` (первый вырез): kit-agnostic — конвенции (kindTags, events,
 passthrough, marker) = вход, `proxy/wrapComponent/bindEvents` = выход, стор —
 только через `IStorePort`. Конформанс-сьют = порт капсульного + контракт
 параметризации.

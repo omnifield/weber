@@ -34,7 +34,7 @@ weber тут — **полигон**: на реальном фронте пров
 2. Ctrl+Click (или F12) на `Views.Counter`.
 3. **Ожидание:** прыжок в `apps/sandbox/src/views/counter.tsx` (исходник), в 1 клик.
 4. **Доложить куда реально попал:** исходник / `.weber/globals.d.ts` / барель `.weber/registry/views/index.ts` / никуда.
-5. Бонус: клик на `Entity`, `View`, `useCtx` — глобалы на `@weber/*` пакеты (навигация в пакеты: dist vs src).
+5. Бонус: клик на `Entity`, `View`, `useCtx` — глобалы на `@omnifield/weber-*` пакеты (навигация в пакеты: dist vs src).
 
 ---
 

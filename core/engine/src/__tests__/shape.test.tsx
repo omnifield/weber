@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { createSolidStateAdapter } from '@weber/state';
+import { createSolidStateAdapter } from '@omnifield/weber-state';
 import { For } from 'solid-js';
 import { render } from 'solid-js/web';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';

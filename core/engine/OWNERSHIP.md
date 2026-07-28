@@ -1,4 +1,4 @@
-# OWNERSHIP — @weber/engine
+# OWNERSHIP — @omnifield/weber-engine
 
 Сборка движка (composition root кора, ADR-0001 §сборка): инстанцирует модули,
 делает межмодульные связки, отдаёт обёртки слоёв. Появилась вместе с обёртками —
@@ -7,7 +7,7 @@
 ## Контракт
 
 - **Вход** — `IWeberEngineConfig`: `kit` (ЛЮБОЙ кит; Outlet/router-примитивы —
-  состав кита при сборке аппа) · `adapter` (state-начинка; дефолт `@weber/state`) ·
+  состав кита при сборке аппа) · `adapter` (state-начинка; дефолт `@omnifield/weber-state`) ·
   `tools` (zod и пр. для Entity/Shape — приносит сборка, кор без dep на zod) ·
   `services` · `registry` · `uiProxy`-конвенции · `aliases` · `trace`.
 - **Выход** — `IWeberEngine`: обёртки `Entity/View/Shape/Widget/Page/Controller/
@@ -43,7 +43,7 @@
 
 `engine.e2e` — СМОК ИТ.1: мини-апп полного цикла (Entity→Feature→View→Widget,
 клик→dispatch→update→ре-рендер) на стаб-ките + реальном solid-адаптере
-(devDep @weber/state — легитимно: сборка и есть место встречи кора с
+(devDep @omnifield/weber-state — легитимно: сборка и есть место встречи кора с
 адаптером) · изоляция двух движков · loader-swap (контент не инстанцируется
 за лоадером; нюанс: loading через эффектный onInit виден после первого
 рендера — timing предка тот же) · shape two-phase (tracker-резолв, overrides,

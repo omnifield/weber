@@ -14,7 +14,7 @@ export interface IDefineLibConfigOptions {
   name: string;
   /**
    * `'browser'` (default) — client lib, `'node'` — серверный/build-time пакет,
-   * `'isomorphic'` — пакет с обоими типами entry (например `@weber/core`,
+   * `'isomorphic'` — пакет с обоими типами entry (например `@omnifield/weber-core`,
    * где `./create` для браузера, а `./builder` для node).
    */
   runtime?: LibRuntime;
@@ -46,7 +46,7 @@ export interface IDefineLibConfigOptions {
 
 /** Всё, что не должно вшиваться в bundle — резолвится у consumer'а. */
 const BROWSER_EXTERNAL: (string | RegExp)[] = [
-  /^@weber\//,
+  /^@omnifield\/weber-/,
   'solid-js',
   /^solid-js\//,
   /^@solidjs\//,

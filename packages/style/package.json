@@ -1,5 +1,5 @@
 {
-  "name": "@weber/style",
+  "name": "@omnifield/weber-style",
   "version": "0.1.0",
   "type": "module",
   "description": "Weber styling layer — token contract, createStyle/cn, zero-config light/dark, custom palettes via config",
@@ -34,8 +34,8 @@
     "solid-js": "^1.9.0"
   },
   "devDependencies": {
+    "@omnifield/weber-lib-builder": "workspace:*",
     "@types/node": "25.9.0",
-    "@weber/lib-builder": "workspace:*",
     "jsdom": "~29.1.1",
     "solid-js": "^1.9.12",
     "vite": "^8.0.13",

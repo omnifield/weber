@@ -1,7 +1,7 @@
 # sandbox — verification-полигон build-infra
 
-Мини-апп на ПОЛНОМ стеке weber: `@weber/engine` (модульный кор) + `@weber/ui`
-(kit-bundle) + `@weber/state` (solid-адаптер) + `@weber/vite` (defineWeberApp:
+Мини-апп на ПОЛНОМ стеке weber: `@omnifield/weber-engine` (модульный кор) + `@omnifield/weber-ui`
+(kit-bundle) + `@omnifield/weber-state` (solid-адаптер) + `@omnifield/weber-vite` (defineWeberApp:
 registry-барели + unimport-глобалы). Слои написаны КАНОНОМ — без импортов
 (Entity/View/Widget/Feature, Entities/Views/Features/Widgets, useCtx — глобалы).
 

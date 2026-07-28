@@ -1,5 +1,5 @@
 {
-  "name": "@weber/lib-builder",
+  "name": "@omnifield/weber-lib-builder",
   "version": "0.1.1",
   "type": "module",
   "main": "./dist/index.mjs",

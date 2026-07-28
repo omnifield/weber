@@ -1,4 +1,4 @@
-# OWNERSHIP — @weber/vite
+# OWNERSHIP — @omnifield/weber-vite
 
 Build-infra (исполнение ADR-0002): `defineWeberApp` — vite-конфиг аппа одной
 функцией. Наша уникальная часть — ТОЛЬКО конвенции (registry-кодген);
@@ -15,7 +15,7 @@ Build-infra (исполнение ADR-0002): `defineWeberApp` — vite-конф�
 - **Глобалы «без импортов» = слой доставки** (`auto-imports.ts`): unimport
   поверх настоящих модулей — обёртки из `@weber-app/engine` (алиас →
   `src/engine.ts` аппа, конвенция), реестры из `@weber-app/registry`
-  (алиас → барели), хуки из `@weber/kernel`/`@weber/logic`. d.ts —
+  (алиас → барели), хуки из `@omnifield/weber-kernel`/`@omnifield/weber-logic`. d.ts —
   `.weber/auto-imports.d.ts` (unplugin, атомарно). Навигация и типы честные —
   боли №1/№3 предка закрыты формой, не патчами.
 - `defineWeberApp({ appRoot?, engineModule?, registryModule?, plugins?,

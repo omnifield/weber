@@ -23,7 +23,7 @@
 
 Цель: >половины логики vite-builder предка не переносится вообще.
 
-*(Исполнено 2026-07-12, `@weber/vite`: registry barrel-кодген (форма ADR-034
+*(Исполнено 2026-07-12, `@omnifield/weber-vite`: registry barrel-кодген (форма ADR-034
 предка — настоящие ES-барели, навигация/типы честные) + unimport-глобалы через
 алиасы `@weber-app/engine`/`@weber-app/registry` + watch без ребута; реестр
 БЕЗ globalThis — данные для `engine.register`. Verification — apps/sandbox

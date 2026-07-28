@@ -7,11 +7,16 @@
  * глобального состояния (решение user: без globalThis, без переходных шимов).
  */
 
-import type { IStateAdapter } from '@weber/kernel';
-import type { ILogicApi, ILogicWrapperProps, LogicKind, SchemaFactory } from '@weber/logic';
-import { createLogic } from '@weber/logic';
-import type { IUiProxyApi, IUiProxyConventions } from '@weber/ui-proxy';
-import { createUiProxy } from '@weber/ui-proxy';
+import type { IStateAdapter } from '@omnifield/weber-kernel';
+import type {
+  ILogicApi,
+  ILogicWrapperProps,
+  LogicKind,
+  SchemaFactory,
+} from '@omnifield/weber-logic';
+import { createLogic } from '@omnifield/weber-logic';
+import type { IUiProxyApi, IUiProxyConventions } from '@omnifield/weber-ui-proxy';
+import { createUiProxy } from '@omnifield/weber-ui-proxy';
 import type { EntityFactory, IEntityDefinition, IEntityTools } from './entity';
 import { createEntityWrapper } from './entity';
 import type { IRegistryApi, IRegistryPatch } from './registry';
@@ -23,7 +28,7 @@ import { createWrappers } from './wrappers';
 export interface IWeberEngineConfig {
   /** Любой UI-kit (дерево компонентов). Outlet/router-примитивы — состав кита при сборке аппа. */
   kit: Kit;
-  /** State-начинка порта (дефолт экосистемы — createSolidStateAdapter из @weber/state). */
+  /** State-начинка порта (дефолт экосистемы — createSolidStateAdapter из @omnifield/weber-state). */
   adapter: IStateAdapter;
   /** Инструменты data-слоя (Entity/Shape фабрики): `{ zod, ... }` — приносит сборка аппа. */
   tools?: IEntityTools;

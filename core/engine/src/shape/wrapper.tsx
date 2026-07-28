@@ -15,7 +15,7 @@
  * (прямая модуль-интеграция).
  */
 
-import { hasAccessResolver, resolveAccess } from '@weber/ui-proxy';
+import { hasAccessResolver, resolveAccess } from '@omnifield/weber-ui-proxy';
 import { createUniqueId, mergeProps, onCleanup, splitProps } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import type { TraceFn } from '../wrappers';

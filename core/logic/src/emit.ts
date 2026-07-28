@@ -7,8 +7,8 @@
  * механика уедет с remote-волной своим швом.
  */
 
-import type { ICtx, ITarget } from '@weber/kernel';
-import { Context, deriveName, getTargetData } from '@weber/kernel';
+import type { ICtx, ITarget } from '@omnifield/weber-kernel';
+import { Context, deriveName, getTargetData } from '@omnifield/weber-kernel';
 import { useContext } from 'solid-js';
 import type { EmitFn } from './interfaces';
 

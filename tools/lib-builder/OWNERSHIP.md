@@ -1,12 +1,12 @@
 ---
-name: @weber/lib-builder
+name: @omnifield/weber-lib-builder
 owner-agent: owner-builders
 group: cli
 status: pre-1.0
 last-updated: 2026-05-20
 ---
 
-# @weber/lib-builder
+# @omnifield/weber-lib-builder
 
 Zero-deps leaf пакет, предоставляющий `libConfig()` — Vite `UserConfig`-фабрику для сборки библиотек в монорепе.
 
@@ -37,7 +37,7 @@ Zero-deps leaf пакет, предоставляющий `libConfig()` — Vite
 
 ## Quirks / gotchas
 
-- **Zero-deps leaf — намеренно.** Нет зависимости от `@weber/compliance` или `@weber/vite-builder`. Если добавить — возникнет bootstrap-цикл: пакеты используют `libConfig` в своих `vite.config.mts` для собственной сборки. ADR 010.
+- **Zero-deps leaf — намеренно.** Нет зависимости от `@omnifield/weber-compliance` или `@omnifield/weber-vite`. Если добавить — возникнет bootstrap-цикл: пакеты используют `libConfig` в своих `vite.config.mts` для собственной сборки. ADR 010.
 
 - **`emitDistPackageJsonPlugin` стрипает `exports`.** Node игнорирует nested-`exports` в `dist/package.json`, а бандлеры дают inconsistent resolution. Регрессионный тест в `cleanRootPkgForDist — drops "exports" field (S-3 fix)`. Не возвращай поле обратно без понимания.
 
@@ -62,7 +62,7 @@ Zero-deps leaf пакет, предоставляющий `libConfig()` — Vite
 |---|---|---|
 | Unit | `src/__tests__/libConfig.test.ts` | external selector (browser/node/isomorphic), bundleDependencies override, cleanRootPkgForDist S-3, plugin selection, build output shape, multi-entry |
 
-Перед изменением: `pnpm --filter @weber/lib-builder test` должен быть green.
+Перед изменением: `pnpm --filter @omnifield/weber-lib-builder test` должен быть green.
 При изменении `rollupExternalSelector` или `cleanRootPkgForDist` — обновить тесты.
 Перед release: `pnpm test:e2e:cli` обязателен.
 

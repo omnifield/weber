@@ -43,7 +43,7 @@ export const buildAutoImports = (options: IAutoImportsOptions = {}) => {
   return [
     { [engineModule]: WRAPPER_NAMES.slice() },
     { [registryModule]: REGISTRY_NAMES.slice() },
-    { '@weber/kernel': ['useCtx', 'useCompositeWrap'] },
-    { '@weber/logic': ['useEmit', 'useEmitOptional'] },
+    { '@omnifield/weber-kernel': ['useCtx', 'useCompositeWrap'] },
+    { '@omnifield/weber-logic': ['useEmit', 'useEmitOptional'] },
   ];
 };

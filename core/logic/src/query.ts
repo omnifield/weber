@@ -6,7 +6,7 @@
  *    ADR-0001) — живёт в замыкании logic-инстанса.
  */
 
-import type { IRegisteredComponent } from '@weber/kernel';
+import type { IRegisteredComponent } from '@omnifield/weber-kernel';
 
 export interface ITagQueryOptions {
   /** Учитывать ли dynamicMeta.tags. По умолчанию true. */

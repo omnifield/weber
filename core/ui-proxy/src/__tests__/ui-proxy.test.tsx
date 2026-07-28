@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { Context } from '@weber/kernel';
+import { Context } from '@omnifield/weber-kernel';
 import { For, Show } from 'solid-js';
 import { render } from 'solid-js/web';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';

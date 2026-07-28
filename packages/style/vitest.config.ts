@@ -2,7 +2,7 @@ import solid from 'vite-plugin-solid';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  // Плагин ради резолва solid (SSR-грабля из OWNERSHIP @weber/state).
+  // Плагин ради резолва solid (SSR-грабля из OWNERSHIP @omnifield/weber-state).
   plugins: [solid({ hot: false })],
   resolve: {
     dedupe: ['solid-js'],

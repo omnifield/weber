@@ -18,19 +18,19 @@
 // продукт без манифеста просто остаётся вне двери :8080 — это норма, декларация манифеста
 // = зона owner'а продукта (Шаг 5.2), не отказ devbox.
 
-import { copyFileSync, existsSync, mkdirSync } from "node:fs";
-import { basename, dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { copyFileSync, existsSync, mkdirSync } from 'node:fs';
+import { basename, dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 // scripts/devbox-publish.mjs → корень репо = scripts/.. (workspace-root, где лежит манифест).
-const REPO_ROOT = resolve(HERE, "..");
+const REPO_ROOT = resolve(HERE, '..');
 const NAME = basename(REPO_ROOT);
-const MANIFEST = join(REPO_ROOT, "omnifield.yaml");
+const MANIFEST = join(REPO_ROOT, 'omnifield.yaml');
 // Общий named volume, куда пишут ВСЕ продукт-devbox'ы и откуда hub-core глобит *.yaml (ro).
 // Путь-монтирования = mount target из .devcontainer/devcontainer.json (единый источник);
 // env-override — только для тестов / нестандартной схемы монтирования.
-const REGISTRY_DIR = process.env.OMNIFIELD_REGISTRY_DIR || "/omnifield-registry";
+const REGISTRY_DIR = process.env.OMNIFIELD_REGISTRY_DIR || '/omnifield-registry';
 
 function main() {
   if (!existsSync(MANIFEST)) {

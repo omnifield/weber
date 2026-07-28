@@ -1,4 +1,4 @@
-import type { VariantProps } from '@weber/style';
+import type { VariantProps } from '@omnifield/weber-style';
 import type { JSX, ValidComponent } from 'solid-js';
 import type { ISlotProps } from '../slot';
 import type { buttonCva } from './variants';

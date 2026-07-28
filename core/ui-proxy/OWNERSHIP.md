@@ -1,4 +1,4 @@
-# OWNERSHIP — @weber/ui-proxy
+# OWNERSHIP — @omnifield/weber-ui-proxy
 
 Первый модуль кора (эталон ADR-0001): kit-agnostic UI-прокси — навешивает
 meta-opt-in event-flow (регистрация, 7 событий, дедуп bubbling, реактивные
@@ -11,7 +11,7 @@ class/name/type, patch'и логики) на ЛЮБОЙ кит компонен�
   Дефолты = проверенный капсульный набор; кит привозит свои overrides.
 - **Выход** — `IUiProxyApi`: `proxy(kit, ctx, wrapperProps)` / `wrapComponent` /
   `bindEvents` (events-only для composite-строк) / `eventMarker`.
-- **Порты**: `ICtx`/`IStorePort` из `@weber/kernel` — стора модуль не знает,
+- **Порты**: `ICtx`/`IStorePort` из `@omnifield/weber-kernel` — стора модуль не знает,
   только порт. Access — инжект-слот (`access.ts`), реализацию привозит
   внешний пакет; переедет в access-модуль при его появлении.
 - Дескриптор: `uiProxyModule` (`weber:ui-proxy`).

@@ -1,4 +1,4 @@
-import { cva } from '@weber/style';
+import { cva } from '@omnifield/weber-style';
 
 export const spinnerCva = cva(
   'inline-block animate-spin rounded-full border-2 border-current border-t-transparent text-muted-foreground',

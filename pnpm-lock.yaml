@@ -35,22 +35,22 @@ importers:
 
   apps/sandbox:
     dependencies:
-      '@weber/engine':
+      '@omnifield/weber-engine':
         specifier: workspace:*
         version: link:../../core/engine
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../../core/kernel
-      '@weber/logic':
+      '@omnifield/weber-logic':
         specifier: workspace:*
         version: link:../../core/logic
-      '@weber/state':
+      '@omnifield/weber-state':
         specifier: workspace:*
         version: link:../../packages/state
-      '@weber/style':
+      '@omnifield/weber-style':
         specifier: workspace:*
         version: link:../../packages/style
-      '@weber/ui':
+      '@omnifield/weber-ui':
         specifier: workspace:*
         version: link:../../packages/ui
       solid-js:
@@ -60,7 +60,7 @@ importers:
         specifier: ^3.23.8
         version: 3.25.76
     devDependencies:
-      '@weber/vite':
+      '@omnifield/weber-vite':
         specifier: workspace:*
         version: link:../../core/vite
       typescript:
@@ -72,23 +72,23 @@ importers:
 
   core/engine:
     dependencies:
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../kernel
-      '@weber/logic':
+      '@omnifield/weber-logic':
         specifier: workspace:*
         version: link:../logic
-      '@weber/ui-proxy':
+      '@omnifield/weber-ui-proxy':
         specifier: workspace:*
         version: link:../ui-proxy
     devDependencies:
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
+      '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
-      '@weber/state':
+      '@omnifield/weber-state':
         specifier: workspace:*
         version: link:../../packages/state
       jsdom:
@@ -115,7 +115,7 @@ importers:
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
+      '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
       jsdom:
@@ -136,14 +136,14 @@ importers:
 
   core/logic:
     dependencies:
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../kernel
     devDependencies:
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
+      '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
       jsdom:
@@ -164,14 +164,14 @@ importers:
 
   core/ui-proxy:
     dependencies:
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../kernel
     devDependencies:
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
+      '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
       jsdom:
@@ -202,7 +202,7 @@ importers:
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
+      '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
       vite:
@@ -214,14 +214,14 @@ importers:
 
   packages/state:
     dependencies:
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../../core/kernel
     devDependencies:
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
+      '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
       solid-js:
@@ -252,7 +252,7 @@ importers:
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
+      '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
       jsdom:
@@ -276,14 +276,14 @@ importers:
       '@kobalte/core':
         specifier: ^0.13.12
         version: 0.13.12(solid-js@1.9.14)
-      '@weber/style':
+      '@omnifield/weber-style':
         specifier: workspace:*
         version: link:../style
     devDependencies:
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
+      '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
       jsdom:

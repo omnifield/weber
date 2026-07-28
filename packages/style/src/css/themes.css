@@ -1,4 +1,4 @@
-/* @weber/style default themes — zero-config пара: :root = light, .dark = dark.
+/* @omnifield/weber-style default themes — zero-config пара: :root = light, .dark = dark.
    Источник правды значений — src/tokens.ts (DEFAULT_LIGHT / DEFAULT_DARK);
    тест default-themes.test.ts сверяет этот файл с TS-контрактом токен-в-токен.
    Кастомные палитры сюда НЕ добавляются — registerTheme() из конфига аппа. */

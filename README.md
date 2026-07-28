@@ -1,6 +1,6 @@
 # Omnifield Weber
 
-Web-фреймворк экосистемы Omnifield. Пакеты — `@weber/*`.
+Web-фреймворк экосистемы Omnifield. Пакеты — `@omnifield/weber-*` (канон именования — kb:MECH-15).
 
 **Модель двух слоёв:**
 - **core** — HCA-меха (обёртки слоёв, UiProxy/ControllerProxy, registry). Внешние нужды —
@@ -17,7 +17,7 @@ Web-фреймворк экосистемы Omnifield. Пакеты — `@weber/
 **Раскладка (кор и пакеты не смешиваются):**
 
 ```
-core/       # меха: @weber/core (+мосты, +инфра-плагины — по мере итераций)
+core/       # меха: @omnifield/weber-* (+мосты, +инфра-плагины — по мере итераций)
 packages/   # standalone Solid-пакеты (state, router, query, dnd, …)
 tools/      # generic-инструменты (lib-builder, biome-config, позже compliance/builder)
 ```

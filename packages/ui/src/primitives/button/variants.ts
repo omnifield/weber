@@ -1,4 +1,4 @@
-import { cva } from '@weber/style';
+import { cva } from '@omnifield/weber-style';
 
 export const variants = {
   variant: {

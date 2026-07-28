@@ -33,8 +33,8 @@ describe('libConfig — external selector (browser runtime)', () => {
     'solid-js',
     'solid-js/web',
     'solid-js/store',
-    '@weber/web-core',
-    '@weber/lib-builder',
+    '@omnifield/weber-core',
+    '@omnifield/weber-lib-builder',
     '@tanstack/solid-router',
     '@kobalte/core',
     '@motionone/solid',
@@ -71,21 +71,21 @@ describe('libConfig — bundleDependencies override', () => {
   it('regex whitelist forces dep to be bundled even if matches external', () => {
     const isExternal = getExternalFn({
       ...baseOpts,
-      bundleDependencies: [/^@weber\/web-state/],
+      bundleDependencies: [/^@omnifield\/weber-state/],
     });
-    expect(isExternal('@weber/web-state', undefined, false)).toBe(false);
-    expect(isExternal('@weber/web-state/some-subpath', undefined, false)).toBe(false);
+    expect(isExternal('@omnifield/weber-state', undefined, false)).toBe(false);
+    expect(isExternal('@omnifield/weber-state/some-subpath', undefined, false)).toBe(false);
     // sibling without whitelist remains external
-    expect(isExternal('@weber/web-core', undefined, false)).toBe(true);
+    expect(isExternal('@omnifield/weber-core', undefined, false)).toBe(true);
   });
 
   it('string whitelist supports exact + subpath', () => {
     const isExternal = getExternalFn({
       ...baseOpts,
-      bundleDependencies: ['@weber/web-state'],
+      bundleDependencies: ['@omnifield/weber-state'],
     });
-    expect(isExternal('@weber/web-state', undefined, false)).toBe(false);
-    expect(isExternal('@weber/web-state/sub', undefined, false)).toBe(false);
+    expect(isExternal('@omnifield/weber-state', undefined, false)).toBe(false);
+    expect(isExternal('@omnifield/weber-state/sub', undefined, false)).toBe(false);
   });
 });
 
@@ -213,7 +213,7 @@ describe('libConfig — plugin selection', () => {
 
 describe('cleanRootPkgForDist — closure-of-S-3 regression', () => {
   const ROOT_PKG = {
-    name: '@weber/foo',
+    name: '@omnifield/weber-foo',
     version: '1.0.0',
     type: 'module' as const,
     main: './dist/index.mjs',
@@ -262,7 +262,7 @@ describe('cleanRootPkgForDist — closure-of-S-3 regression', () => {
 
   it('preserves dependencies + name + version + type', () => {
     const out = cleanRootPkgForDist(ROOT_PKG, 'dist');
-    expect(out.name).toBe('@weber/foo');
+    expect(out.name).toBe('@omnifield/weber-foo');
     expect(out.version).toBe('1.0.0');
     expect(out.type).toBe('module');
     expect(out.dependencies).toEqual({ 'solid-js': '^1.9.0' });

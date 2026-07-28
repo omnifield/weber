@@ -5,8 +5,8 @@
  * хендлеры) → View (meta-кнопка из СТАБ-кита + реактивное значение из ctx) →
  * Widget (композиция) → клик → dispatch → store.update → ре-рендер.
  */
-import { useCtx } from '@weber/kernel';
-import { createSolidStateAdapter } from '@weber/state';
+import { useCtx } from '@omnifield/weber-kernel';
+import { createSolidStateAdapter } from '@omnifield/weber-state';
 import { render } from 'solid-js/web';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';

@@ -1,4 +1,4 @@
-# Brief — порт примитивов кита (@weber/ui, волна 1)
+# Brief — порт примитивов кита (@omnifield/weber-ui, волна 1)
 
 | | |
 |---|---|
@@ -25,7 +25,7 @@ by-need следующими волнами.
 
 1. **Структура = эталон button**: `<name>.tsx` · `variants.ts` · `interfaces.ts` ·
    `<name>.manifest.ts` · `index.ts` · `__tests__/<name>.test.tsx`.
-2. **Замены при порте**: `@capsuletech/web-style` → `@weber/style`;
+2. **Замены при порте**: `@capsuletech/web-style` → `@omnifield/weber-style`;
    `useTrace(...)` — УДАЛИТЬ (не портируется, см. OWNERSHIP);
    `*.stories.tsx` — НЕ переносить (сторибука нет); `*.contract.ts` /
    `propsSchemaOf`/web-contract — НЕ переносить: propsSchema манифеста

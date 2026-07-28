@@ -1,4 +1,4 @@
-# OWNERSHIP — @weber/style
+# OWNERSHIP — @omnifield/weber-style
 
 Styling-слой: токен-КОНТРАКТ + createStyle/cn + zero-config light/dark +
 кастомные палитры конфигом (решения user 2026-07-12).
@@ -14,9 +14,9 @@ Styling-слой: токен-КОНТРАКТ + createStyle/cn + zero-config lig
   `createThemeController(opts)` — PER-INSTANCE сигналы (palette × mode),
   опц. localStorage-персист, `.dark` с body-зеркалом (MutationObserver-грабля).
 - `createStyle` (CVA-обвязка) · `cn`/`merge`/`cva` · `STATUS_VARIABLES`.
-- CSS-субпаты: `@weber/style/css` (base: tailwind-алиасы, density/motion/
+- CSS-субпаты: `@omnifield/weber-style/css` (base: tailwind-алиасы, density/motion/
   radii-шкалы, kobalte-анимации, скроллбар, base-reset) ·
-  `@weber/style/themes.css` (дефолт-пара `:root`+`.dark`).
+  `@omnifield/weber-style/themes.css` (дефолт-пара `:root`+`.dark`).
 
 ## Решения порта (отличия от предка)
 

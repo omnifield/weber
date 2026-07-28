@@ -8,7 +8,7 @@
  * vitest-файла адаптера.
  */
 
-import type { IStateAdapter } from '@weber/kernel';
+import type { IStateAdapter } from '@omnifield/weber-kernel';
 import { createComputed, createRoot } from 'solid-js';
 import { describe, expect, it } from 'vitest';
 

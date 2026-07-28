@@ -1,4 +1,4 @@
-import { defineModule } from '@weber/kernel';
+import { defineModule } from '@omnifield/weber-kernel';
 import type { ILogicApi, ILogicModuleConfig } from './logic-wrapper';
 import { createLogic } from './logic-wrapper';
 

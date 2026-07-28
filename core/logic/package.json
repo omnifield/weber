@@ -1,5 +1,5 @@
 {
-  "name": "@weber/logic",
+  "name": "@omnifield/weber-logic",
   "version": "0.1.0",
   "type": "module",
   "description": "Weber core module: logic layer — schema-driven dispatch (ControllerProxy), lifecycle, emit, tag-queries over the state port",
@@ -24,14 +24,14 @@
     "lint": "biome check src"
   },
   "dependencies": {
-    "@weber/kernel": "workspace:*"
+    "@omnifield/weber-kernel": "workspace:*"
   },
   "peerDependencies": {
     "solid-js": "^1.9.0"
   },
   "devDependencies": {
+    "@omnifield/weber-lib-builder": "workspace:*",
     "@types/node": "25.9.0",
-    "@weber/lib-builder": "workspace:*",
     "jsdom": "~29.1.1",
     "solid-js": "^1.9.12",
     "vite": "^8.0.13",

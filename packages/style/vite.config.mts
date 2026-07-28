@@ -1,6 +1,6 @@
 import { copyFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { libConfig } from '@weber/lib-builder';
+import { libConfig } from '@omnifield/weber-lib-builder';
 
 export default libConfig({
   entry: 'src/index.ts',
