@@ -20,6 +20,8 @@
   "devDependencies": {
     "@biomejs/biome": "^2.5.3",
     "@nx/js": "^23.0.1",
+    "@omnifield/baser-cli": "^0.0.2",
+    "@omnifield/baser-devbox": "^0.5.1",
     "@omnifield/biome-preset": "^0.1.1",
     "@omnifield/nx-preset": "^0.1.1",
     "husky": "^9.1.7",

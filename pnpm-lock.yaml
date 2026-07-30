@@ -14,6 +14,12 @@ importers:
       '@nx/js':
         specifier: ^23.0.1
         version: 23.1.0(@babel/traverse@7.29.7)(nx@23.1.0)
+      '@omnifield/baser-cli':
+        specifier: ^0.0.2
+        version: 0.0.2(@nx/devkit@23.1.0(nx@23.1.0))
+      '@omnifield/baser-devbox':
+        specifier: ^0.5.1
+        version: 0.5.1
       '@omnifield/biome-preset':
         specifier: ^0.1.1
         version: 0.1.1
@@ -82,15 +88,15 @@ importers:
         specifier: workspace:*
         version: link:../ui-proxy
     devDependencies:
-      '@types/node':
-        specifier: 25.9.0
-        version: 25.9.0
       '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
       '@omnifield/weber-state':
         specifier: workspace:*
         version: link:../../packages/state
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -112,12 +118,12 @@ importers:
 
   core/kernel:
     devDependencies:
-      '@types/node':
-        specifier: 25.9.0
-        version: 25.9.0
       '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -140,12 +146,12 @@ importers:
         specifier: workspace:*
         version: link:../kernel
     devDependencies:
-      '@types/node':
-        specifier: 25.9.0
-        version: 25.9.0
       '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -168,12 +174,12 @@ importers:
         specifier: workspace:*
         version: link:../kernel
     devDependencies:
-      '@types/node':
-        specifier: 25.9.0
-        version: 25.9.0
       '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -199,12 +205,12 @@ importers:
         specifier: ^2.11.12
         version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
     devDependencies:
-      '@types/node':
-        specifier: 25.9.0
-        version: 25.9.0
       '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
       vite:
         specifier: ^8.0.13
         version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
@@ -218,12 +224,12 @@ importers:
         specifier: workspace:*
         version: link:../../core/kernel
     devDependencies:
-      '@types/node':
-        specifier: 25.9.0
-        version: 25.9.0
       '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
       solid-js:
         specifier: ^1.9.12
         version: 1.9.14
@@ -249,12 +255,12 @@ importers:
         specifier: ^3.4.0
         version: 3.6.0
     devDependencies:
-      '@types/node':
-        specifier: 25.9.0
-        version: 25.9.0
       '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -280,12 +286,12 @@ importers:
         specifier: workspace:*
         version: link:../style
     devDependencies:
-      '@types/node':
-        specifier: 25.9.0
-        version: 25.9.0
       '@omnifield/weber-lib-builder':
         specifier: workspace:*
         version: link:../../tools/lib-builder
+      '@types/node':
+        specifier: 25.9.0
+        version: 25.9.0
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -1138,11 +1144,32 @@ packages:
   '@nx/workspace@23.1.0':
     resolution: {integrity: sha512-cobC05wJX7c2bWJ6s3g0IOuu6YLCEPrmpkZdX4xPEtt3GX96BsDnBpqSaqdrKhmhaa16oIERisU3AozmxmV6DA==}
 
+  '@omnifield/baser-check@0.0.2':
+    resolution: {integrity: sha512-S1cbQjcSutBqdDSymf3iqywt+z/bUQzdoFNt3SwUCP4mIA/vtqH2I1VF1UqjHVrovS9JzjyOxKxmTOiQp8WsLg==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-check/0.0.2/edb7c2fde69e8868af1c09c2a9952f17b4e963f5}
+
+  '@omnifield/baser-cli@0.0.2':
+    resolution: {integrity: sha512-qEuv06Kef74OFMcw1p6X0P4BfvAK48LmTv92+/Pma4cpxHZ3pBxRETlSTCRA4F7hCVo1Ij8p98J3bjDF2BEARA==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-cli/0.0.2/25e68078e95cfe49a75bb7573671e37ab96116d0}
+    hasBin: true
+
+  '@omnifield/baser-contracts@0.0.2':
+    resolution: {integrity: sha512-O0MXgmEl2fyrqy1NyyPGK3FvB4qi7fFxmsix7XQK5aAjFrOArN1Xlj8rXaXk+oU2lrBCb1am7p5BkncCbkXkaw==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-contracts/0.0.2/f95695c95bda8c0df09296547ef482e47e153d9b}
+
+  '@omnifield/baser-devbox@0.5.1':
+    resolution: {integrity: sha512-4cVXTIQK+xCLyFhcHWGbgYVHRQW/NlADwQ6TEyz9dMXBVxnvVq/wNy8JuO3lFXnSO9qW3pJddxuc9IUNs25aGw==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-devbox/0.5.1/ded8bbc587da2bd843ac5293eeccf784fbd59b2c}
+
+  '@omnifield/baser-materialize@0.0.2':
+    resolution: {integrity: sha512-WO8N/s+xHUu6y/SzQVfXjRebgg/dz8bINwSbKod9HEDgnrReOZgnbC/L9KKN6UF7GRzE2xyROLz1qQbAAuSjsg==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-materialize/0.0.2/c902934ddb8dbf4b581242052533528b64de2705}
+    peerDependencies:
+      '@nx/devkit': ^23.0.0
+
+  '@omnifield/baser-pack@0.0.2':
+    resolution: {integrity: sha512-EmxRFAOfidkZQPkguqx0igwurUmoS4VDf71/8xAjREeZOvMtZioiqYOBu3TWm5gX0fBUohqFnwxQC1vGOWECZQ==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-pack/0.0.2/3fbca02fdaf48e1532e2bf95e12213073aa764a4}
+
   '@omnifield/biome-preset@0.1.1':
-    resolution: {integrity: sha512-QvUY3puHngrYEW7HtVc0pWpek70qfksuebROY3JEOURh8Z2HgJK9UdyzZdeiXKZuLy7UqLZg7prcbfLc2dVZUw==}
+    resolution: {integrity: sha512-QvUY3puHngrYEW7HtVc0pWpek70qfksuebROY3JEOURh8Z2HgJK9UdyzZdeiXKZuLy7UqLZg7prcbfLc2dVZUw==, tarball: https://npm.pkg.github.com/download/@omnifield/biome-preset/0.1.1/6aa7022388fca36645c59148cda8de7b46675066}
 
   '@omnifield/nx-preset@0.1.1':
-    resolution: {integrity: sha512-OxWqkAF6Rzs2X/2zSUbMTNOq4axy2eG5GhzzXYpcVp9CTApf7axpPlDl8Iu5eBvBb+L0Zs4drUce9UFivVozcQ==}
+    resolution: {integrity: sha512-OxWqkAF6Rzs2X/2zSUbMTNOq4axy2eG5GhzzXYpcVp9CTApf7axpPlDl8Iu5eBvBb+L0Zs4drUce9UFivVozcQ==, tarball: https://npm.pkg.github.com/download/@omnifield/nx-preset/0.1.1/2b364e0b2d71a58780573db787bea2ecd4022074}
 
   '@oxc-project/types@0.139.0':
     resolution: {integrity: sha512-r9gHphtCs+1M7J0pw6Sn/hh/Wpa/iQrOOkrNAlVLF/gHq+/CJmHIWKKUUhdWjcD6CIa8idarspCsASiXCXvFUw==}
@@ -3717,6 +3744,40 @@ snapshots:
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
+
+  '@omnifield/baser-check@0.0.2':
+    dependencies:
+      '@omnifield/baser-contracts': 0.0.2
+      tslib: 2.8.1
+
+  '@omnifield/baser-cli@0.0.2(@nx/devkit@23.1.0(nx@23.1.0))':
+    dependencies:
+      '@omnifield/baser-check': 0.0.2
+      '@omnifield/baser-contracts': 0.0.2
+      '@omnifield/baser-materialize': 0.0.2(@nx/devkit@23.1.0(nx@23.1.0))
+      '@omnifield/baser-pack': 0.0.2
+      ejs: 5.0.1
+      tslib: 2.8.1
+      yaml: 2.9.0
+    transitivePeerDependencies:
+      - '@nx/devkit'
+
+  '@omnifield/baser-contracts@0.0.2':
+    dependencies:
+      tslib: 2.8.1
+
+  '@omnifield/baser-devbox@0.5.1': {}
+
+  '@omnifield/baser-materialize@0.0.2(@nx/devkit@23.1.0(nx@23.1.0))':
+    dependencies:
+      '@nx/devkit': 23.1.0(nx@23.1.0)
+      tslib: 2.8.1
+
+  '@omnifield/baser-pack@0.0.2':
+    dependencies:
+      '@omnifield/baser-check': 0.0.2
+      '@omnifield/baser-contracts': 0.0.2
+      tslib: 2.8.1
 
   '@omnifield/biome-preset@0.1.1': {}
 

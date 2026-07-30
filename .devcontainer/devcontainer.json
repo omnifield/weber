@@ -1,17 +1,65 @@
 {
-  "name": "omnifield-devbox",
-  "image": "ghcr.io/omnifield/devbox:v2026.07.10",
-  "remoteUser": "vscode",
-  "runArgs": ["--add-host=host.docker.internal:host-gateway"],
-  "containerEnv": {
-    "CLAUDE_CONFIG_DIR": "/home/vscode/.secrets/claude",
-    "NPM_CONFIG_USERCONFIG": "/home/vscode/.secrets/npmrc",
-    "GIT_CONFIG_GLOBAL": "/home/vscode/.secrets/gitconfig",
-    "GH_CONFIG_DIR": "/home/vscode/.secrets/gh"
-  },
-  "mounts": [
-    "source=omnifield-pnpm-store,target=/home/vscode/.local/share/pnpm/store,type=volume",
-    "source=omnifield-secrets,target=/home/vscode/.secrets,type=volume"
+  // weber-devbox — Ф2 (kb:ADR-16 volume-workspace, kb:FUND-4 containers-only).
+  // ГРИНФИЛД на стандартном Dev Containers (adopt-not-invent, kb:ADR-20): upstream-образ +
+  // features + native "Clone Repository in Container Volume". БЕЗ skeleton-скриптов
+  // (devbox.sh/-manifest/-session/-services) и БЕЗ biome/GH-Packages — это devopser-legacy.
+  // Docker-инварианты канон-чистого девбокса сохранены (kb:DEVOPSER-3).
+  "name": "weber-devbox",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:24",
+  "remoteUser": "node",
+
+  // Канон-чистые инварианты (kb:DEVOPSER-3): peer-alias в общей сети omnifield-gateway
+  // (видят tasker/knowledger по имени), host-gateway, НОЛЬ host-портов (single-origin —
+  // наружу только дверь :8080; verdaccio :4873 остаётся внутренним), контейнер переживает
+  // рестарт демона.
+  "runArgs": [
+    "--network=omnifield-gateway",
+    "--network-alias=weber",
+    "--add-host=host.docker.internal:host-gateway",
+    "--restart=unless-stopped"
   ],
-  "postCreateCommand": "sudo chown -R vscode:vscode /home/vscode/.local/share/pnpm/store /home/vscode/.secrets && (timeout 20 npm whoami --registry=https://npm.pkg.github.com >/dev/null 2>&1 || { echo '✖ npm.pkg.github.com: нет валидного PAT в $NPM_CONFIG_USERCONFIG (секрет-volume omnifield-secrets) — @omnifield-пакеты не встанут. Занос кредов: devbox/README §Пост-шаги'; exit 1; }) && pnpm install"
+
+  // Секрет-модель (kb:FUND-4): креды/кэши — в named-volume'ах, ENV указывает в /home/node/.secrets.
+  // Ничего не хардкодим в образ/репо; тома переживают recreate.
+  "containerEnv": {
+    "CLAUDE_CONFIG_DIR": "/home/node/.secrets/claude",
+    "GIT_CONFIG_GLOBAL": "/home/node/.secrets/gitconfig",
+    "GH_CONFIG_DIR": "/home/node/.secrets/gh",
+    "NPM_CONFIG_USERCONFIG": "/home/node/.secrets/npmrc"
+  },
+
+  // gh — для git-flow (rulesets/PR). node/pnpm/git несёт базовый образ (pnpm-версия — из пина
+  // репо `packageManager: pnpm@10.11.0` через corepack; образ = тонкая оболочка, версии — репо).
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  // Общие на машине named-volume'ы (одни креды/стор на все omnifield-девбоксы), переживают recreate.
+  // Workspace-ТОМ здесь НЕ объявляем: им управляет "Clone Repository in Container Volume"
+  // (kb:ADR-16) — VS Code сам создаёт том, клонирует репо, монтирует как workspace. См. runbook.
+  "mounts": [
+    "source=omnifield-secrets,target=/home/node/.secrets,type=volume",
+    "source=omnifield-pnpm-store,target=/home/node/.local/share/pnpm/store,type=volume"
+  ],
+
+  "customizations": {
+    "vscode": {
+      // Расширения и форматтер — настройки обвеса. Дополняют .vscode/extensions.json репо.
+      // Форматтер в списке — от обвеса: его значение и есть идентификатор расширения,
+      // поэтому ставить его вторым перечислением человеку незачем.
+      "extensions": ["nrwl.angular-console", "biomejs.biome"],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "biomejs.biome",
+        "typescript.tsdk": "node_modules/typescript/lib"
+      }
+    }
+  },
+
+  // Одноразовая (per-volume) настройка: corepack→pnpm-пин + глобальный ассистент
+  // (kb:FUND-4 — исполнение/ассистент живут В контейнере, не на хосте).
+  "onCreateCommand": "sudo corepack enable && npm install -g @anthropic-ai/claude-code@latest",
+
+  // Репо-зависимая настройка: права на общие тома, seed claude-онбординга, проверка доступа к реестру, установка зависимостей.
+  "postCreateCommand": "sudo chown -R node:node /home/node/.secrets /home/node/.local/share/pnpm/store && mkdir -p \"$CLAUDE_CONFIG_DIR\" && { [ -f \"$CLAUDE_CONFIG_DIR/.claude.json\" ] || printf '%s\\n' '{\"hasCompletedOnboarding\":true,\"hasTrustDialogAccepted\":true,\"theme\":\"dark\"}' > \"$CLAUDE_CONFIG_DIR/.claude.json\"; } && ( reg=$(npm config get @omnifield:registry); case \"$reg\" in http*) ;; *) printf '%s\\n' '[devbox] Пакеты @omnifield/* тянутся из приватного реестра, а он не настроен.' '[devbox] Установка пойдёт в npmjs.org и ответит «404, пакета нет» — хотя пакет есть, нет доступа.' '[devbox] Настрой доступ в /home/node/.secrets/npmrc — том, переживает пересоздание контейнера:' '[devbox]   npm config set @omnifield:registry <адрес-реестра> --location=user' '[devbox]   npm config set //<хост-реестра>/:_authToken <токен> --location=user' >&2 ; exit 1;; esac; h=${reg#*://}; h=${h%/}; npm whoami --registry=\"$reg\" --fetch-retries=0 >/dev/null 2>&1 || { printf '%s\\n' '[devbox] Реестр для @omnifield настроен, а доступа к нему нет: токен не положен или протух.' \"[devbox]   реестр: $reg\" \"[devbox]   проверка руками: npm whoami --registry=$reg\" '[devbox] Положи токен в /home/node/.secrets/npmrc — том, переживает пересоздание контейнера:' \"[devbox]   npm config set //$h/:_authToken <токен> --location=user\" >&2 ; exit 1; } ) && pnpm install --frozen-lockfile"
 }

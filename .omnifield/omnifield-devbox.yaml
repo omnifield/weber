@@ -1,0 +1,21 @@
+# Настройки обвеса девбокса (@omnifield/baser-devbox). Читается ключ `baser`.
+#
+# Заполнено ТОЛЬКО то, что диктует стек weber. Всё остальное — дефолты обвеса и
+# пресет: незаполненное едет за его выпусками, заполненное — не поднимается.
+baser:
+  presets:
+    # Раскладка omnifield: сеть omnifield-gateway + peer-alias, тома omnifield-secrets
+    # и omnifield-pnpm-store, ассистент внутрь контейнера.
+    - omnifield
+  settings:
+    # weber потребляет @omnifield/* из приватного реестра — без проверки npm уходит
+    # в npmjs.org и отвечает «404, пакета нет» вместо «нет доступа». В пресет она не
+    # уехала сознательно: baser свои пакеты производит, а не потребляет.
+    privateScope: "@omnifield"
+    # Стек репозитория — Biome (biome.json + @omnifield/biome-preset), не prettier.
+    # Форматтер обвес сам добавит в список расширений, перечислять дважды не нужно.
+    editorFormatter: biomejs.biome
+    # Дефолт обвеса несёт prettier-расширение — оно здесь лишнее. Nx-консоль оставляем:
+    # репозиторий на nx.
+    editorExtensions:
+      - nrwl.angular-console
