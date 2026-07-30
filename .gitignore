@@ -37,3 +37,7 @@ out-tsc/
 .claude/.main-session-id
 .claude/settings.local.json
 # <<< omnifield-skeleton <<<
+
+# Артефакт установки agent-harness (плагин распаковывается сюда при провижне).
+# Обвязка .claude/ и .omnifield/ трекается, распакованный установщик — нет.
+agent-harness-plugin/

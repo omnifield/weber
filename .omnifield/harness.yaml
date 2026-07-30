@@ -1,0 +1,51 @@
+# harness.yaml — роль-модель weber (agent-harness plugin).
+#
+# Файлом владеет продукт. Рамка (инварианты ролей) впаяна в .claude/agents/*.md,
+# здесь — ДАННЫЕ роль-модели под weber.
+#
+# Канон продукта — раздел WEBER в knowledger. Роадмап — раздел WEBER в tasker.
+apiVersion: omnifield.dev/v1
+kind: harness
+
+product: weber
+
+# Один архитектор: продукт один, зон пока нет.
+architects: 1
+
+# Пины по факту сессий. architect — сильнейшая, остальные по дефолту рамки.
+models:
+  architect: claude-opus-5
+  owner: claude-opus-4-8
+  layer: claude-haiku-4-5-20251001
+
+# ЗОНЫ ПОКА НЕ РЕЖЕМ — СОЗНАТЕЛЬНО.
+#
+# Раскладка weber (core/ packages/ tools/ apps/) отражает текущие папки, но не
+# согласованную роль-модель: weber по уровню = фундамент, и резать его надо под
+# фреймворк, а не под то, что случайно сложилось. Модель обсуждается отдельно —
+# задача 0.5, tasker:WEBER-6; гейтится границей «фреймворк ↔ продукт» (tasker:WEBER-5).
+#
+# Следствие сейчас: работает только architect/main. owner-сессии стартовать
+# нельзя, и это правильно — governance резал бы по непродуманным границам.
+# Доктор об этом честно предупреждает.
+zones: {}
+
+# Git-доступ по роли — РАМКА (инвариант shared-policy), выключить нельзя:
+# architect=full · owner=commit-only (gate) · layer=none.
+git:
+  architect: full
+  owner: commit-only
+  layer: none
+
+# Затыки и грабли — центральный догфуд-беклог под контролем brainer-архитектора.
+grabli:
+  workspace: GRABLI2
+
+# Базы сервисов. ВАЖНО: соседи по docker-сети (tasker:8030 / knowledger:8040)
+# из этого контейнера НЕ отвечают — проверено. Рабочий путь — дверь через хост.
+# Доступ — curl'ом через Bash с ОТКЛЮЧЁННЫМ сэндбоксом (сэндбокс режет сеть).
+# Auth — стаб: `Authorization: Bearer <любой непустой handle>`, handle пишется actor'ом.
+# Проверка связи: curl -s <base>/healthz
+services:
+  tasker: http://host.docker.internal:8080/api/tasker
+  knowledger: http://host.docker.internal:8080/api/knowledger

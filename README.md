@@ -22,7 +22,9 @@ packages/   # standalone Solid-пакеты (state, router, query, dnd, …)
 tools/      # generic-инструменты (lib-builder, biome-config, позже compliance/builder)
 ```
 
-Канон/стандарты — `omnifield/knowledger`. Roadmap — https://github.com/orgs/omnifield/projects/1
+Канон продукта — раздел `WEBER` в `omnifield/knowledger` (концепт, аналогии, решения, рамка индустрии).
+Роадмап — раздел `WEBER` в `omnifield/tasker`. В репозитории координационных файлов и решений НЕ держим
+(shared-policy: истина живёт снаружи репо).
 
 ## Dev
 
