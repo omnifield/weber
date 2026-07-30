@@ -41,11 +41,16 @@ git:
 grabli:
   workspace: GRABLI2
 
-# Базы сервисов. ВАЖНО: соседи по docker-сети (tasker:8030 / knowledger:8040)
-# из этого контейнера НЕ отвечают — проверено. Рабочий путь — дверь через хост.
+# Базы сервисов. После переезда девбокса на обвес baser контейнер входит в сеть
+# omnifield-gateway под алиасом weber — соседи отвечают напрямую (проверено
+# 2026-07-30, tasker:WEBER-34). Прежняя запись «соседи недоступны, только дверь»
+# относилась к старому девбоксу и снята.
+# Запасной путь, если соседи молчат, — дверь через хост:
+#   http://host.docker.internal:8080/api/tasker · .../api/knowledger
+# localhost:8080 изнутри контейнера НЕ отвечает — это адрес хост-машины.
 # Доступ — curl'ом через Bash с ОТКЛЮЧЁННЫМ сэндбоксом (сэндбокс режет сеть).
 # Auth — стаб: `Authorization: Bearer <любой непустой handle>`, handle пишется actor'ом.
 # Проверка связи: curl -s <base>/healthz
 services:
-  tasker: http://host.docker.internal:8080/api/tasker
-  knowledger: http://host.docker.internal:8080/api/knowledger
+  tasker: http://tasker:8030/tasker
+  knowledger: http://knowledger:8040/knowledger
