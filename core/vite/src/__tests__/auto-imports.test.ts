@@ -7,8 +7,8 @@ describe('buildAutoImports — глобалы поверх настоящих м
     const flat = Object.assign({}, ...imports) as Record<string, string[]>;
     expect(flat['@weber-app/engine']).toEqual([...WRAPPER_NAMES]);
     expect(flat['@weber-app/registry']).toEqual([...REGISTRY_NAMES]);
-    expect(flat['@weber/kernel']).toContain('useCtx');
-    expect(flat['@weber/logic']).toContain('useEmit');
+    expect(flat['@omnifield/weber-kernel']).toContain('useCtx');
+    expect(flat['@omnifield/weber-logic']).toContain('useEmit');
   });
 
   it('пути переопределяются опциями', () => {

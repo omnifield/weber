@@ -4,8 +4,8 @@
  * DOM-специфика (deriveInputType с картой из конвенций).
  */
 
-export type { AnyEvent } from '@weber/kernel';
-export { deriveName, getTargetData } from '@weber/kernel';
+export type { AnyEvent } from '@omnifield/weber-kernel';
+export { deriveName, getTargetData } from '@omnifield/weber-kernel';
 
 /**
  * Деривация HTML input-type из тегов по карте конвенций. `undefined` —

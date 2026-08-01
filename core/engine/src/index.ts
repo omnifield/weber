@@ -1,4 +1,4 @@
-import { defineModule } from '@weber/kernel';
+import { defineModule } from '@omnifield/weber-kernel';
 import type { IWeberEngine, IWeberEngineConfig } from './engine';
 import { createWeberEngine } from './engine';
 

@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { useCompositeWrap, useCtx } from '@weber/kernel';
+import { useCompositeWrap, useCtx } from '@omnifield/weber-kernel';
 import { render } from 'solid-js/web';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { IHandlerApi } from '../interfaces';

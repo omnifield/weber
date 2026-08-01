@@ -6,7 +6,7 @@ apiVersion: omnifield.dev/v1
 name: weber
 type: frontend
 title: Weber
-description: Веб-редактор карточек знаний
+description: Фундамент фронта — веб-фреймворк для долгоживущих приложений
 reach:
   routes:
     - path: /weber

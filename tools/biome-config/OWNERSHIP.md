@@ -1,12 +1,12 @@
 ---
-name: @weber/biome-config
+name: @omnifield/weber-biome-config
 owner-agent: owner-builders
 group: other
 status: stable
 last-updated: 2026-05-20
 ---
 
-# @weber/biome-config
+# @omnifield/weber-biome-config
 
 Shared Biome preset для всего монорепо и внешних потребителей. Config-only пакет — нет `src/`, нет `dist/`, нет build-step.
 
@@ -30,7 +30,7 @@ Shared Biome preset для всего монорепо и внешних пот�
 
 Потребляется двумя способами:
 1. Root репо: `{ "extends": ["./packages/builders/biome/biome.json"] }` (путь к файлу)
-2. Внешний consumer: `{ "extends": ["@weber/biome-config/biome.json"] }` (через npm)
+2. Внешний consumer: `{ "extends": ["@omnifield/weber-biome-config/biome.json"] }` (через npm)
 
 Содержимое `biome.json`:
 - `"root": false` — не root, вкладывается в extends-цепочку
@@ -41,7 +41,7 @@ Shared Biome preset для всего монорепо и внешних пот�
 
 ## Quirks / gotchas
 
-- **Config-only пакет — нет `src/`, нет `dist/`.** `package.json.files: ["biome.json"]`, `exports: { "./biome.json": "./biome.json" }`. `dev:builders` в root исключает пакет флагом `--filter "!@weber/biome-config"` — у него нет `build`/`dev` скриптов. Это норма, не баг.
+- **Config-only пакет — нет `src/`, нет `dist/`.** `package.json.files: ["biome.json"]`, `exports: { "./biome.json": "./biome.json" }`. `dev:builders` в root исключает пакет флагом `--filter "!@omnifield/weber-biome-config"` — у него нет `build`/`dev` скриптов. Это норма, не баг.
 
 - **Изменения правил → массовые форматирования в репо.** Когда меняешь правило linter/formatter — потребуется `pnpm lint:fix` по всему монорепо. Думай дважды, особенно для `formatter` (lineWidth, indentStyle) — это diff в сотнях файлов.
 
@@ -72,6 +72,6 @@ Shared Biome preset для всего монорепо и внешних пот�
 
 ## Release group
 
-- `@weber/biome-config` **НЕ входит** в группу `cli`. Версионируется независимо (own version 0.0.10).
+- `@omnifield/weber-biome-config` **НЕ входит** в группу `cli`. Версионируется независимо (own version 0.0.10).
 
 Изменения preset'а → согласовать с главным, потому что root репо подхватит через extends автоматически.

@@ -1,4 +1,4 @@
-import type { ILogicSchema, IStateApi, ITarget } from '@weber/kernel';
+import type { ILogicSchema, IStateApi, ITarget } from '@omnifield/weber-kernel';
 import type { IStoreFacade } from './store-facade';
 
 /** Bubble к родителю: пассивный `next()` либо с явной передачей `next.with(arg)`. */

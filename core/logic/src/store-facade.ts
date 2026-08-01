@@ -5,7 +5,7 @@
  * контракте моста и не в адаптере.
  */
 
-import type { IRegisteredComponent, IStorePort } from '@weber/kernel';
+import type { IRegisteredComponent, IStorePort } from '@omnifield/weber-kernel';
 import type { ExpandTags, ITagQueryOptions } from './query';
 import { matchByTags, matchEntryByTags, omitByTags, pickByTags } from './query';
 

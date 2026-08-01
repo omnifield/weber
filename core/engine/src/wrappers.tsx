@@ -10,10 +10,10 @@
  * фича вернётся инъекцией с kit/style-волной (см. OWNERSHIP).
  */
 
-import type { ICtx } from '@weber/kernel';
-import { useCtx } from '@weber/kernel';
-import type { IStoreFacade } from '@weber/logic';
-import type { IUiProxyApi } from '@weber/ui-proxy';
+import type { ICtx } from '@omnifield/weber-kernel';
+import { useCtx } from '@omnifield/weber-kernel';
+import type { IStoreFacade } from '@omnifield/weber-logic';
+import type { IUiProxyApi } from '@omnifield/weber-ui-proxy';
 import type { JSX } from 'solid-js';
 import { children, createUniqueId, onCleanup, Show } from 'solid-js';
 import { ShapeUiContext } from './shape/context';

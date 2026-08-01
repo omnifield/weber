@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [solid({ hot: false })],
   resolve: {
     alias: {
-      '@weber/style': resolve(__dirname, '../style/src/index.ts'),
+      '@omnifield/weber-style': resolve(__dirname, '../style/src/index.ts'),
     },
     dedupe: ['solid-js', 'solid-js/web'],
   },

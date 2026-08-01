@@ -1,4 +1,4 @@
-# OWNERSHIP — @weber/ui
+# OWNERSHIP — @omnifield/weber-ui
 
 Stateless UI-kit. Итерация 1 = каркас + контракт `IKitBundle` + эталон-примитив
 Button (со Slot/Spinner — его дерево deps). Остальные примитивы — по брифу

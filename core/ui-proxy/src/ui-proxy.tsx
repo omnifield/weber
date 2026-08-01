@@ -1,5 +1,5 @@
-import type { ICtx } from '@weber/kernel';
-import { Context } from '@weber/kernel';
+import type { ICtx } from '@omnifield/weber-kernel';
+import { Context } from '@omnifield/weber-kernel';
 import type { JSX } from 'solid-js';
 import {
   createEffect,

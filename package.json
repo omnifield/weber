@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Omnifield Weber — web framework (@weber/*): HCA core (mecha) + standalone Solid packages",
+  "description": "Omnifield Weber — web framework (@omnifield/weber-*): HCA core (mecha) + standalone Solid packages",
   "packageManager": "pnpm@10.11.0",
   "engines": {
     "node": ">=22"
@@ -20,7 +20,10 @@
   "devDependencies": {
     "@biomejs/biome": "^2.5.3",
     "@nx/js": "^23.0.1",
+    "@omnifield/baser-cli": "^0.1.0",
+    "@omnifield/baser-devbox": "^0.8.1",
     "@omnifield/biome-preset": "^0.1.1",
+    "@omnifield/brainer-harness": "0.2.0",
     "@omnifield/nx-preset": "^0.1.1",
     "husky": "^9.1.7",
     "nx": "^23.0.1",

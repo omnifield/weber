@@ -1,6 +1,6 @@
-# @weber/biome-config
+# @omnifield/weber-biome-config
 
-Shared [Biome](https://biomejs.dev) preset for the Weber framework — code formatter + linter config used by all `@weber/*` packages.
+Shared [Biome](https://biomejs.dev) preset for the Weber framework — code formatter + linter config used by all `@omnifield/weber-*` packages.
 
 ## Использование
 
@@ -9,7 +9,7 @@ Shared [Biome](https://biomejs.dev) preset for the Weber framework — code form
 ```json
 {
   "$schema": "https://biomejs.dev",
-  "extends": ["@weber/biome-config/biome.json"]
+  "extends": ["@omnifield/weber-biome-config/biome.json"]
 }
 ```
 

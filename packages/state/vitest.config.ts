@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [solid({ hot: false })],
   resolve: {
     alias: {
-      '@weber/kernel': resolve(__dirname, '../../core/kernel/src/index.ts'),
+      '@omnifield/weber-kernel': resolve(__dirname, '../../core/kernel/src/index.ts'),
     },
     dedupe: ['solid-js', 'solid-js/store'],
   },

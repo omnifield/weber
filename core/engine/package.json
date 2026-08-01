@@ -1,5 +1,5 @@
 {
-  "name": "@weber/engine",
+  "name": "@omnifield/weber-engine",
   "version": "0.1.0",
   "type": "module",
   "description": "Weber engine assembly — wires core modules into a working engine: layer wrappers (Entity/View/Shape/Widget/Page/Controller/Feature), per-engine registry, createRoot",
@@ -24,17 +24,17 @@
     "lint": "biome check src"
   },
   "dependencies": {
-    "@weber/kernel": "workspace:*",
-    "@weber/logic": "workspace:*",
-    "@weber/ui-proxy": "workspace:*"
+    "@omnifield/weber-kernel": "workspace:*",
+    "@omnifield/weber-logic": "workspace:*",
+    "@omnifield/weber-ui-proxy": "workspace:*"
   },
   "peerDependencies": {
     "solid-js": "^1.9.0"
   },
   "devDependencies": {
+    "@omnifield/weber-lib-builder": "workspace:*",
+    "@omnifield/weber-state": "workspace:*",
     "@types/node": "25.9.0",
-    "@weber/lib-builder": "workspace:*",
-    "@weber/state": "workspace:*",
     "jsdom": "~29.1.1",
     "solid-js": "^1.9.12",
     "vite": "^8.0.13",

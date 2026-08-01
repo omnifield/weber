@@ -33,7 +33,7 @@ describe('generateGlobalsDts — слои typeof import однослойного
     expect(dts).toContain('const Widgets: Record<string, never>;');
     // обёртки и хуки — из engine-алиаса и пакетов кора
     expect(dts).toContain("const View: (typeof import('@weber-app/engine'))['View'];");
-    expect(dts).toContain("const useCtx: (typeof import('@weber/kernel'))['useCtx'];");
+    expect(dts).toContain("const useCtx: (typeof import('@omnifield/weber-kernel'))['useCtx'];");
     expect(dts).toContain('declare global {');
     // раунд-3 (declaration map) откачен
     expect(dts).not.toContain('sourceMappingURL');

@@ -2,9 +2,9 @@
  * Engine-модуль аппа (конвенция build-infra: unimport берёт обёртки отсюда —
  * глобалы Entity/View/… в слоях резолвятся СЮДА, навигация честная).
  */
-import { createWeberEngine } from '@weber/engine';
-import { createSolidStateAdapter } from '@weber/state';
-import { weberKit } from '@weber/ui';
+import { createWeberEngine } from '@omnifield/weber-engine';
+import { createSolidStateAdapter } from '@omnifield/weber-state';
+import { weberKit } from '@omnifield/weber-ui';
 import { z } from 'zod';
 
 export const engine = createWeberEngine({

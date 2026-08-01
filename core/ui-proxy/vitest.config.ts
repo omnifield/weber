@@ -9,7 +9,7 @@ export default defineConfig({
     alias: {
       // workspace-dep напрямую в src: тесты не зависят от собранного dist
       // (и от порядка nx build), Vite транформирует kernel как обычный модуль.
-      '@weber/kernel': resolve(__dirname, '../kernel/src/index.ts'),
+      '@omnifield/weber-kernel': resolve(__dirname, '../kernel/src/index.ts'),
     },
     dedupe: ['solid-js', 'solid-js/web', 'solid-js/store'],
   },

@@ -7,7 +7,7 @@
  * Shape резолвит путь по реальному Ui из ShapeUiContext.
  */
 
-const PATH = Symbol.for('@weber/engine:shape-ui-path');
+const PATH = Symbol.for('@omnifield/weber-engine:shape-ui-path');
 
 type Tracker = ((..._: unknown[]) => unknown) & {
   readonly [PATH]: readonly string[];

@@ -1,4 +1,4 @@
-import { defineModule } from '@weber/kernel';
+import { defineModule } from '@omnifield/weber-kernel';
 import type { IUiProxyConventions } from './conventions';
 import type { IUiProxyApi } from './ui-proxy';
 import { createUiProxy } from './ui-proxy';

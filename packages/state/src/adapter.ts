@@ -8,7 +8,12 @@
  * реактивных скоупах.
  */
 
-import type { ILogicInstance, ILogicSchema, IStateAdapter, IStorePort } from '@weber/kernel';
+import type {
+  ILogicInstance,
+  ILogicSchema,
+  IStateAdapter,
+  IStorePort,
+} from '@omnifield/weber-kernel';
 import { createSignal } from 'solid-js';
 import { createStore, produce, unwrap } from 'solid-js/store';
 

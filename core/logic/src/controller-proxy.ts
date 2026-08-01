@@ -10,7 +10,7 @@
  * unwrap `.data` не нужен.
  */
 
-import type { ICtx, IStateApi, ITarget } from '@weber/kernel';
+import type { ICtx, IStateApi, ITarget } from '@omnifield/weber-kernel';
 import type { EmitFn, ILogicSchemaFull, INext } from './interfaces';
 import type { IStoreFacade } from './store-facade';
 

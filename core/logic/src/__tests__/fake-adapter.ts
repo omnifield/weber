@@ -1,10 +1,10 @@
 /**
  * Фейк-адаптер для тестов logic-модуля: минимальная реализация FSM/store-порта
  * на Solid-примитивах. Модуль тестируется ПРОТИВ ПОРТА (не против пакета
- * @weber/state — у кора нет прав на deps в пакеты, даже тестовых).
+ * @omnifield/weber-state — у кора нет прав на deps в пакеты, даже тестовых).
  */
 
-import type { ILogicInstance, ILogicSchema, IStateAdapter } from '@weber/kernel';
+import type { ILogicInstance, ILogicSchema, IStateAdapter } from '@omnifield/weber-kernel';
 import { createSignal } from 'solid-js';
 import { createStore, produce } from 'solid-js/store';
 

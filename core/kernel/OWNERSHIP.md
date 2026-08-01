@@ -1,4 +1,4 @@
-# OWNERSHIP — @weber/kernel
+# OWNERSHIP — @omnifield/weber-kernel
 
 Тонкое ядро кора (ADR-0001): контракт модуля + порты + HCA runtime-контекст.
 НЕ содержит механик — только то, что должно иметь ЕДИНУЮ identity у всех модулей.
@@ -10,7 +10,7 @@
   module-global state в модулях запрещён.
 - `IStorePort<TCtx>` / `IControllerPort` / `ICtx` — порты (`ports.ts`):
   read/write-поверхность state-шва в объёме фактического потребления модулями.
-  Шаг 2 (logic-модуль) расширит FSM-стороной; первый адаптер — `@weber/state`.
+  Шаг 2 (logic-модуль) расширит FSM-стороной; первый адаптер — `@omnifield/weber-state`.
 - `Context` / `useCtx` / `createUseCtx` — единый Solid-Context HCA-дерева
   (динамический резолв «ближайший Provider» у модулей работает поверх
   ОДНОЙ identity — не заводить второй Context нигде).

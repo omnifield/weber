@@ -10,13 +10,22 @@ importers:
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.5.3
-        version: 2.5.3
+        version: 2.5.6
       '@nx/js':
         specifier: ^23.0.1
-        version: 23.0.1(@babel/traverse@7.29.7)(nx@23.0.1)
+        version: 23.1.0(@babel/traverse@7.29.7)(nx@23.1.0)
+      '@omnifield/baser-cli':
+        specifier: ^0.1.0
+        version: 0.1.0(@nx/devkit@23.1.0(nx@23.1.0))
+      '@omnifield/baser-devbox':
+        specifier: ^0.8.1
+        version: 0.8.1
       '@omnifield/biome-preset':
         specifier: ^0.1.1
         version: 0.1.1
+      '@omnifield/brainer-harness':
+        specifier: 0.2.0
+        version: 0.2.0
       '@omnifield/nx-preset':
         specifier: ^0.1.1
         version: 0.1.1
@@ -25,7 +34,7 @@ importers:
         version: 9.1.7
       nx:
         specifier: ^23.0.1
-        version: 23.0.1
+        version: 23.1.0
       sherif:
         specifier: ^1.13.0
         version: 1.13.0
@@ -35,22 +44,22 @@ importers:
 
   apps/sandbox:
     dependencies:
-      '@weber/engine':
+      '@omnifield/weber-engine':
         specifier: workspace:*
         version: link:../../core/engine
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../../core/kernel
-      '@weber/logic':
+      '@omnifield/weber-logic':
         specifier: workspace:*
         version: link:../../core/logic
-      '@weber/state':
+      '@omnifield/weber-state':
         specifier: workspace:*
         version: link:../../packages/state
-      '@weber/style':
+      '@omnifield/weber-style':
         specifier: workspace:*
         version: link:../../packages/style
-      '@weber/ui':
+      '@omnifield/weber-ui':
         specifier: workspace:*
         version: link:../../packages/ui
       solid-js:
@@ -60,7 +69,7 @@ importers:
         specifier: ^3.23.8
         version: 3.25.76
     devDependencies:
-      '@weber/vite':
+      '@omnifield/weber-vite':
         specifier: workspace:*
         version: link:../../core/vite
       typescript:
@@ -68,29 +77,29 @@ importers:
         version: 5.9.3
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
 
   core/engine:
     dependencies:
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../kernel
-      '@weber/logic':
+      '@omnifield/weber-logic':
         specifier: workspace:*
         version: link:../logic
-      '@weber/ui-proxy':
+      '@omnifield/weber-ui-proxy':
         specifier: workspace:*
         version: link:../ui-proxy
     devDependencies:
+      '@omnifield/weber-lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
+      '@omnifield/weber-state':
+        specifier: workspace:*
+        version: link:../../packages/state
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
-        specifier: workspace:*
-        version: link:../../tools/lib-builder
-      '@weber/state':
-        specifier: workspace:*
-        version: link:../../packages/state
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -99,25 +108,25 @@ importers:
         version: 1.9.14
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       vite-plugin-solid:
         specifier: ^2.11.12
-        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       vitest:
         specifier: ~4.1.0
-        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       zod:
         specifier: ^3.23.8
         version: 3.25.76
 
   core/kernel:
     devDependencies:
+      '@omnifield/weber-lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
-        specifier: workspace:*
-        version: link:../../tools/lib-builder
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -126,26 +135,26 @@ importers:
         version: 1.9.14
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       vite-plugin-solid:
         specifier: ^2.11.12
-        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       vitest:
         specifier: ~4.1.0
-        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
 
   core/logic:
     dependencies:
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../kernel
     devDependencies:
+      '@omnifield/weber-lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
-        specifier: workspace:*
-        version: link:../../tools/lib-builder
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -154,26 +163,26 @@ importers:
         version: 1.9.14
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       vite-plugin-solid:
         specifier: ^2.11.12
-        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       vitest:
         specifier: ~4.1.0
-        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
 
   core/ui-proxy:
     dependencies:
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../kernel
     devDependencies:
+      '@omnifield/weber-lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
-        specifier: workspace:*
-        version: link:../../tools/lib-builder
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -182,13 +191,13 @@ importers:
         version: 1.9.14
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       vite-plugin-solid:
         specifier: ^2.11.12
-        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       vitest:
         specifier: ~4.1.0
-        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
 
   core/vite:
     dependencies:
@@ -197,45 +206,45 @@ importers:
         version: 20.3.0
       vite-plugin-solid:
         specifier: ^2.11.12
-        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
     devDependencies:
+      '@omnifield/weber-lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
-        specifier: workspace:*
-        version: link:../../tools/lib-builder
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       vitest:
         specifier: ~4.1.0
-        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
 
   packages/state:
     dependencies:
-      '@weber/kernel':
+      '@omnifield/weber-kernel':
         specifier: workspace:*
         version: link:../../core/kernel
     devDependencies:
+      '@omnifield/weber-lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
-        specifier: workspace:*
-        version: link:../../tools/lib-builder
       solid-js:
         specifier: ^1.9.12
         version: 1.9.14
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       vite-plugin-solid:
         specifier: ^2.11.12
-        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       vitest:
         specifier: ~4.1.0
-        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
 
   packages/style:
     dependencies:
@@ -249,12 +258,12 @@ importers:
         specifier: ^3.4.0
         version: 3.6.0
     devDependencies:
+      '@omnifield/weber-lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
-        specifier: workspace:*
-        version: link:../../tools/lib-builder
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -263,29 +272,29 @@ importers:
         version: 1.9.14
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       vite-plugin-solid:
         specifier: ^2.11.12
-        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       vitest:
         specifier: ~4.1.0
-        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
 
   packages/ui:
     dependencies:
       '@kobalte/core':
         specifier: ^0.13.12
         version: 0.13.12(solid-js@1.9.14)
-      '@weber/style':
+      '@omnifield/weber-style':
         specifier: workspace:*
         version: link:../style
     devDependencies:
+      '@omnifield/weber-lib-builder':
+        specifier: workspace:*
+        version: link:../../tools/lib-builder
       '@types/node':
         specifier: 25.9.0
         version: 25.9.0
-      '@weber/lib-builder':
-        specifier: workspace:*
-        version: link:../../tools/lib-builder
       jsdom:
         specifier: ~29.1.1
         version: 29.1.1
@@ -294,13 +303,13 @@ importers:
         version: 1.9.14
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       vite-plugin-solid:
         specifier: ^2.11.12
-        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       vitest:
         specifier: ~4.1.0
-        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       zod:
         specifier: ^3.23.8
         version: 3.25.76
@@ -311,10 +320,10 @@ importers:
     dependencies:
       vite-plugin-dts:
         specifier: ~5.0.0
-        version: 5.0.3(@vue/language-core@3.1.8(typescript@5.9.3))(rolldown@1.1.5)(typescript@5.9.3)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 5.0.3(@vue/language-core@3.1.8(typescript@5.9.3))(rolldown@1.1.5)(typescript@5.9.3)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       vite-plugin-solid:
         specifier: ^2.11.12
-        version: 2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
     devDependencies:
       '@types/node':
         specifier: 25.9.0
@@ -324,10 +333,10 @@ importers:
         version: 3.1.8(typescript@5.9.3)
       vite:
         specifier: ^8.0.13
-        version: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+        version: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       vitest:
         specifier: ~4.1.0
-        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+        version: 4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
 
 packages:
 
@@ -893,55 +902,55 @@ packages:
     resolution: {integrity: sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==}
     engines: {node: '>=6.9.0'}
 
-  '@biomejs/biome@2.5.3':
-    resolution: {integrity: sha512-MrJswFdei9EfDwwUy2tQrPDpK0AO+RmMFvBoaaJ6ayBc3sUbHdCE+XG5N8vp+5So41ZupZJQm0roHFFhMGVD7A==}
+  '@biomejs/biome@2.5.6':
+    resolution: {integrity: sha512-lxVNjv7UF6KfhMJfL9gaUHbWdJdHbsAj6OSmwSYNdhRuG67NxNQ4Xdvh3TUxsSK9sBzJBQhEJj3AopmmNJ5pSA==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-darwin-arm64@2.5.3':
-    resolution: {integrity: sha512-QhYP9muVQ0nUO5zztFuPbEwi4+94sJWVjaZds9aMi1l/KNZBiUjdiSUrGHsTaMGDXrYl+r4AS2sUKfgH3w+V3g==}
+  '@biomejs/cli-darwin-arm64@2.5.6':
+    resolution: {integrity: sha512-zMOLZP4oMrjh6m1zcSj1ud2awUPgTuMVbmQhYYWL7J8HwCnbHHBvTm7VBTRuY7epT5bez76IpKYQ11ZAqHFlnw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@2.5.3':
-    resolution: {integrity: sha512-NC1Ss13UaW7QZX+y8j44bF7AP0jSJdBl6iRhe0MAkvaSqZy+mWg3GaXsrb+eSoHoGDBtaXWEbMVV0iVN2cZ7cQ==}
+  '@biomejs/cli-darwin-x64@2.5.6':
+    resolution: {integrity: sha512-JAC1VqzvO7Th5ZplU0G2uGfkZbxEe9uDDektPAhF0JLusoz1w+T4okp2bkykI0bbaO2vslKiRfj4gU43JaGreA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@2.5.3':
-    resolution: {integrity: sha512-fccix0w6xp6csCXgxeC0dU/3ecgRQal0y+cv2SP9ajNlhe7Yrk2Ug7UDe2j9AT9ZDYitkXpvUKgZjjuoYeP4Vg==}
+  '@biomejs/cli-linux-arm64-musl@2.5.6':
+    resolution: {integrity: sha512-eUa3jeeYvfMt19LBeh6E5PUZpxnTC4JqNWo+EDjTtQjAr2xLGnWaxACtVU1DQqmHYbvThlJzLX+ZsYgrqh2qVw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
 
-  '@biomejs/cli-linux-arm64@2.5.3':
-    resolution: {integrity: sha512-ksx1KWeyYW18ILL04msF/J4ZBtBDN33znYK8Z/aNv/vlBVxL9/g3mGP+omgHJKy4+KWbK87vcmmpmurfNjSgiA==}
+  '@biomejs/cli-linux-arm64@2.5.6':
+    resolution: {integrity: sha512-6XsYwCFkp5sMxl85ffhgeGpGgs6A7dRYFnkceZ7WVxvycuTnGdD5xa534Z3xfrBQ0JCMK/mujT6ZNPJoghedwg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
 
-  '@biomejs/cli-linux-x64-musl@2.5.3':
-    resolution: {integrity: sha512-O/yU9YKRUiHhmcjF2f38PSjseVk3G4VLWYc0G2HWpzdBVREV6G8IGWIVEFf7MFPfWIzNUIvPsEjeAZQIOgnLcQ==}
+  '@biomejs/cli-linux-x64-musl@2.5.6':
+    resolution: {integrity: sha512-2Vp13QdKysH3HIWLaYLhUUwbK+jbZonJD1K+Lr0d0RO4wH7mkYd43vJixEDm8cUWrowoRz4UUHF1nm9Ae7ym8A==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
 
-  '@biomejs/cli-linux-x64@2.5.3':
-    resolution: {integrity: sha512-yMkJtilsgvILDcVkh187aVLTb64xYsrxYajx5kym+r1ULkO5HUOfu9AYKLGQbOVLwJtT2utNw7hhFNg+17mUYA==}
+  '@biomejs/cli-linux-x64@2.5.6':
+    resolution: {integrity: sha512-Pop9VXCFUhFTMfFefZ39S+u2rOPyNp5iHlxbZRwXGACHLy2r0jjiRgJHmaEKJzL3SyxlVeGShXhvvElvWowonA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
 
-  '@biomejs/cli-win32-arm64@2.5.3':
-    resolution: {integrity: sha512-cX5z+GYwRcqEok0AH3KSfQGgqYd0Nomfp6Fbe1uiTtELE38hdH2k842wQ9wLNaF/JJ7r4rjJQ4VR+ce+fRmQbw==}
+  '@biomejs/cli-win32-arm64@2.5.6':
+    resolution: {integrity: sha512-tDGshcm6BdkZOCGnTDX0Y8/U4IfBSlnUU7T56nNDuPEfed+aHg+u8G36NB43fJVl0Os6+QURXIE1yuD7AaEofA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@2.5.3':
-    resolution: {integrity: sha512-ExSaJWi4/u6+GXCszlSKpWSjKNbDseAYqqkCznsCsZ/4uidZ/BEqsCc5/3ctlq6dfIubdIIRSVLC/PG9xPl70Q==}
+  '@biomejs/cli-win32-x64@2.5.6':
+    resolution: {integrity: sha512-WN05KwXnTO/2J45RQPvzZMXf7tZUIofHoR35xIPfCo7pQ2RFidxI8sfb5mGsaTxdMmEOzHzOPRCdA5/fCpc7xQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
@@ -1069,13 +1078,13 @@ packages:
       '@emnapi/core': ^1.7.1
       '@emnapi/runtime': ^1.7.1
 
-  '@nx/devkit@23.0.1':
-    resolution: {integrity: sha512-A/chuNS1RZwdbRe/Nf+w0qtPEFHLcZNPzo8Abw5mBxyXmy9yvHZpuZuqDbt/lASFU+TEb74xExL1AnKWwqpOIg==}
+  '@nx/devkit@23.1.0':
+    resolution: {integrity: sha512-4LPBrjwtretBQksqph2aXqz2Atd5+oO7RTVlQoOweU8Sh2A0wM8CNig8n+LX2iwxniPYRooLN4kRtKxO4mi2Mw==}
     peerDependencies:
       nx: '>= 22 <= 24 || ^23.0.0-0'
 
-  '@nx/js@23.0.1':
-    resolution: {integrity: sha512-H8jw1gk7hA8PCXBFC9ocTBpzuXOTvVQ1gA+OlEBMyKqmUaOLNm7yuoOYozwvLsLlCVY27onohSIS8xIdAR/Zow==}
+  '@nx/js@23.1.0':
+    resolution: {integrity: sha512-Gp8c/3ZixVqjMcmkfRaIf/wrxjPrfngaHuoALWIQVjK0X2dcCqR9fxYs7sAnmlrkWlWNkwT6NcCx+sJ8uTR3Yw==}
     peerDependencies:
       '@swc/cli': '>=0.6.0 <0.9.0'
       verdaccio: ^6.0.5
@@ -1085,61 +1094,85 @@ packages:
       verdaccio:
         optional: true
 
-  '@nx/nx-darwin-arm64@23.0.1':
-    resolution: {integrity: sha512-gQJvgPnbI91DBe23Th2CqD9R/S54cPS3C1f0DhyQ8YEf9rR7EEc+sVGjhgVxlhfOk2W7I1Gy6EkXwpN4aDoW4w==}
+  '@nx/nx-darwin-arm64@23.1.0':
+    resolution: {integrity: sha512-wIFH5p0AXLxbYUHgYEH/zpWpPTQ9LpqESo/GcOPXkSBtUkSAZcqXZ6jmFzTPqGAeP4PBcVZIetO0TXmSSyEO7Q==}
     cpu: [arm64]
     os: [darwin]
 
-  '@nx/nx-darwin-x64@23.0.1':
-    resolution: {integrity: sha512-e/lvzHKN6gpuD7MqEtfH1fOfnR75E55ytYNt8jaRxKI6EvpCq+Q3MunDuh9GQYAkqDrUqE7AhHrHc+eKATVEHw==}
+  '@nx/nx-darwin-x64@23.1.0':
+    resolution: {integrity: sha512-D7fEW3+agyb0cWGi8qgN/0irHUwcO8nsuYOrRJjphtWE6J76EORW5sMY93/YFfnLeFVhBMBNVrE6aj2Y4wYCbA==}
     cpu: [x64]
     os: [darwin]
 
-  '@nx/nx-freebsd-x64@23.0.1':
-    resolution: {integrity: sha512-f582OhSYN9qHpA9Ox9qnr3kZSZ7gQHs7crmBUutmbXmZQB2TDS/TlhvYSNnxudpwHR/tuWGi2IOQqa7zGOZj1Q==}
+  '@nx/nx-freebsd-x64@23.1.0':
+    resolution: {integrity: sha512-yZoZyc9t3ViaA9WWDe5F7IlJ+58Hqdn6gqoO9UG2FH3Io1mj+KpF3jhUoj3S1m18D28MN2oItS762QIt6otO3g==}
     cpu: [x64]
     os: [freebsd]
 
-  '@nx/nx-linux-arm-gnueabihf@23.0.1':
-    resolution: {integrity: sha512-VjhqPc6E7aiI0e+lowrkVbdyulsmP9fgMdcX1mCzXCEu/XZDcUbZ5qveR964cMhvm5qKn0ILJtJOUqZgmOT3Xg==}
+  '@nx/nx-linux-arm-gnueabihf@23.1.0':
+    resolution: {integrity: sha512-D6QhBsLRUmwCc1jSjmY5MkyKOSWuQXQmu5K3BH6d1/uoX2HEZ68XgNyMkSwMA0g6jBKHIAguGkujiaCiXBEPeA==}
     cpu: [arm]
     os: [linux]
 
-  '@nx/nx-linux-arm64-gnu@23.0.1':
-    resolution: {integrity: sha512-zX2JdHQejZWB3DRgNsh77qOVYaSSjSLuBP2qIqc7EWVlCUnR7Aj3e65PTIps4LxMMmUp4twZA2ezS0rtyK2A4w==}
+  '@nx/nx-linux-arm64-gnu@23.1.0':
+    resolution: {integrity: sha512-Q61stbUFVBw9TprlVLkRQmk+fuMXPlyTlvGExJ1y8KYymDTFsjs8LFk7zTnRvFpI9LVMRuhyD3osaLy2TxPU7Q==}
     cpu: [arm64]
     os: [linux]
 
-  '@nx/nx-linux-arm64-musl@23.0.1':
-    resolution: {integrity: sha512-9lyhxRNBgNYwHt6paq0OLzoKNoEGF5LnNW2YYrgFY8Cjtsg/Q4pcfZ1vB5o9FX9OmUgUQs3t2d4tU8YDukRUWg==}
+  '@nx/nx-linux-arm64-musl@23.1.0':
+    resolution: {integrity: sha512-Lm5PC4yuBHw4gr37vcAX3kvS75prqL1VpbQkPHs4Z2Us1ri29ALxgdrEFgF6fbCXxl4w3sWmcbKGvrcMdpuvIQ==}
     cpu: [arm64]
     os: [linux]
 
-  '@nx/nx-linux-x64-gnu@23.0.1':
-    resolution: {integrity: sha512-kVszY2xRyyrCXgdCdM1qG1WUhDjNPZxtdWq86a0TyIRJjfJTP9NHqpyhmvj9c2RdZxKVWHotx6fBJzY6Vn2ZrA==}
+  '@nx/nx-linux-x64-gnu@23.1.0':
+    resolution: {integrity: sha512-v1ELSkVskidK6A+mm/Ynm8TWIb5UdzGWMcD7CTgmvjTzKfXIO0QY1ToDTqvoBwnetcehWR5gnhQlhQgOSH8XFA==}
     cpu: [x64]
     os: [linux]
 
-  '@nx/nx-linux-x64-musl@23.0.1':
-    resolution: {integrity: sha512-co71K2n4zcS1SYR8EBRlCvIko7M1YycO2tZL0nrCrga87AF5dzCwx+wEclpyCR/4tNOY3FrACk4gIkVskh3CdA==}
+  '@nx/nx-linux-x64-musl@23.1.0':
+    resolution: {integrity: sha512-pD/Axn0usK2/RV2bSrLX7h59YpOXGiaYHmlZynVVS+CqkKbyFzxnrvvLmRdOdMxsfM6oDXom4lCcJMg+wUYcpw==}
     cpu: [x64]
     os: [linux]
 
-  '@nx/nx-win32-arm64-msvc@23.0.1':
-    resolution: {integrity: sha512-7oma7iy5fbnn+x5AP7SFGMuleAA2R5RZm26dn+faikyQ4PXjoRAikWJJNiOWAeCA0BaMAeVedI6fJeAsVeDUKg==}
+  '@nx/nx-win32-arm64-msvc@23.1.0':
+    resolution: {integrity: sha512-lhnRaXPGUwqw/dqBnWl/6d6r8mRQXuZS7qnnTd+U5O1R7YPb2494BQyE7aSVEFLHcX9nXywMGxo5+OUCH84xQA==}
     cpu: [arm64]
     os: [win32]
 
-  '@nx/nx-win32-x64-msvc@23.0.1':
-    resolution: {integrity: sha512-TE/wvBa2cpkVXmk/AXUQAneong4JReS2hyNpAUONKG1yXU7TDKe0wvn1xQXxAbyspudT9NuCnVtpVuEkRz8S+Q==}
+  '@nx/nx-win32-x64-msvc@23.1.0':
+    resolution: {integrity: sha512-fJaNYwNk4RiUnyEDTc0bMu69dmUzgM7iGinoqFenwYEtwaXPWREBRWL6lgRDyR3CFsJw3Wi0uc+33cfreTbhVw==}
     cpu: [x64]
     os: [win32]
 
-  '@nx/workspace@23.0.1':
-    resolution: {integrity: sha512-VdbvMTSEzp3ONZwiy83XEu8ktykC8aEI7M4mqKs5RNKHBFg3jtao2NFo3wDqHqnn1q9Fdaj8EbyUn08BUR5L3w==}
+  '@nx/workspace@23.1.0':
+    resolution: {integrity: sha512-cobC05wJX7c2bWJ6s3g0IOuu6YLCEPrmpkZdX4xPEtt3GX96BsDnBpqSaqdrKhmhaa16oIERisU3AozmxmV6DA==}
+
+  '@omnifield/baser-check@0.0.4':
+    resolution: {integrity: sha512-4c+4MhKzbkNfXM4HZE8K+kskCqrHDiPYpkzGyhOiRZGXrV8pSLmxyycIvVtagEK5peARV0l58uAKDph83GMCJQ==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-check/0.0.4/90c0bbd4d8944f4b1cc8ade5bde133350a0f2240}
+
+  '@omnifield/baser-cli@0.1.0':
+    resolution: {integrity: sha512-bCDoNj11DWsRU7Ev275v8O8dwT2OfeEkwzHrW0WPd23NvzYPvQt88eUY0nWBjFiOFWrxB9KSMNNhPvBjg6/BXw==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-cli/0.1.0/981b4bc30a4143bdf6d14a506460bc705130d538}
+    hasBin: true
+
+  '@omnifield/baser-contracts@0.2.0':
+    resolution: {integrity: sha512-h8bo7aADnQPtmPQUb25I5Ev9z2G+S9MRIVNu0sR3iqqCUd29c9uridZH467b3auNnmfmnE7L4JlFknFOwX7JKw==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-contracts/0.2.0/2e9d329c46f26867fafef0df454d5ae06288f889}
+
+  '@omnifield/baser-devbox@0.8.1':
+    resolution: {integrity: sha512-QaBwP7aDGpEjUc3nrkC1aOA4facZnxtwodPQ1ueyNhcpFJDGO7/RvFCBloy+ajx65B9lyTBcMHLGnq9pE2TIqw==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-devbox/0.8.1/37d87e051be171d248b665912b8f254114d9077d}
+
+  '@omnifield/baser-materialize@0.0.2':
+    resolution: {integrity: sha512-WO8N/s+xHUu6y/SzQVfXjRebgg/dz8bINwSbKod9HEDgnrReOZgnbC/L9KKN6UF7GRzE2xyROLz1qQbAAuSjsg==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-materialize/0.0.2/c902934ddb8dbf4b581242052533528b64de2705}
+    peerDependencies:
+      '@nx/devkit': ^23.0.0
+
+  '@omnifield/baser-pack@0.0.4':
+    resolution: {integrity: sha512-I5z+it2N0nEiL70Ps9i4rQt+y1eb1yvaV+2DvSsMH9zCeHVsJfbaLFae9bqwf7Ogg0+m7IyqAThcRbmfWLtvLA==, tarball: https://npm.pkg.github.com/download/@omnifield/baser-pack/0.0.4/119d96e2e266d01a2de37f40e2a91809b549c872}
 
   '@omnifield/biome-preset@0.1.1':
     resolution: {integrity: sha512-QvUY3puHngrYEW7HtVc0pWpek70qfksuebROY3JEOURh8Z2HgJK9UdyzZdeiXKZuLy7UqLZg7prcbfLc2dVZUw==, tarball: https://npm.pkg.github.com/download/@omnifield/biome-preset/0.1.1/6aa7022388fca36645c59148cda8de7b46675066}
+
+  '@omnifield/brainer-harness@0.2.0':
+    resolution: {integrity: sha512-Svp29uWoFB5usbRP0yVRR37E+JX3nBI9K2IU5ewV9MTq1JjCkidUxf5B5vPcAAFI5a5kPeYNepJMXjF3K6nxtQ==, tarball: https://npm.pkg.github.com/download/@omnifield/brainer-harness/0.2.0/f8f06281c68f0bec42152b73af9aa57bb13b246c}
 
   '@omnifield/nx-preset@0.1.1':
     resolution: {integrity: sha512-OxWqkAF6Rzs2X/2zSUbMTNOq4axy2eG5GhzzXYpcVp9CTApf7axpPlDl8Iu5eBvBb+L0Zs4drUce9UFivVozcQ==, tarball: https://npm.pkg.github.com/download/@omnifield/nx-preset/0.1.1/2b364e0b2d71a58780573db787bea2ecd4022074}
@@ -1419,6 +1452,10 @@ packages:
     resolution: {integrity: sha512-XNAb/a6TCqou+TufU8/u11HCu9x1gYvOoxLwtlXgIqmkrYQADVv6ljyW2zwiPhHz9R1gItAWpuDrdJMmrOBFEA==}
     engines: {node: '>= 16.0.0'}
 
+  agent-base@6.0.2:
+    resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
+    engines: {node: '>= 6.0.0'}
+
   alien-signals@3.2.1:
     resolution: {integrity: sha512-I8FjmltrfnDFoZedi5CG8DghVYNhzb/Ijluz7tCSJH0xpd0484Kowhbb1XDYOxfJpU1p5wnM2X54dA+IfGyD1g==}
 
@@ -1444,8 +1481,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@1.16.0:
-    resolution: {integrity: sha512-6hp5CwvTPlN2A31g5dxnwAX0orzM7pmCRDLnZSX772mv8WDqICwFjowHuPs04Mc8deIld1+ejhtaMn5vp6b+1w==}
+  axios@1.16.1:
+    resolution: {integrity: sha512-caYkukvroVPO8KrzuJEb50Hm07KwfBZPEC3VeFHTsqWHvKTsy54hjJz9BS/cdaypROE2rH6xvm9mHX4fgWkr3A==}
 
   babel-plugin-const-enum@1.2.0:
     resolution: {integrity: sha512-o1m/6iyyFnp9MRsK1dHF3bneqyf3AlM2q3A/YbgQr2pCat6B6XJVDv2TXqzfY2RYUi4mak6WAksSBPlyYGx9dg==}
@@ -1828,6 +1865,10 @@ packages:
   html-entities@2.3.3:
     resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
 
+  https-proxy-agent@5.0.1:
+    resolution: {integrity: sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==}
+    engines: {node: '>= 6'}
+
   husky@9.1.7:
     resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
     engines: {node: '>=18'}
@@ -2056,8 +2097,8 @@ packages:
   muggle-string@0.4.1:
     resolution: {integrity: sha512-VNTrAak/KhO2i8dqqnqnAHOa3cYBwXEZe9h+D5h/1ZqFSTEFHdM65lR7RoIqq3tBBYavsOXV84NoHXZ0AkPyqQ==}
 
-  nanoid@3.3.15:
-    resolution: {integrity: sha512-y7Wygv/7mEOvxTuEQDB8StXdMRBWf1kR/tlhAzBRUFkB2jfcLOAxO/SHmOO2zgz1pVgK29/kyupn059/bCHdjA==}
+  nanoid@3.3.16:
+    resolution: {integrity: sha512-bzlKTyNJ7+LdGIIwy8ijFpIqEQIvafahV7eYykJ8Cvh42EdJeODoJ6gUJXpQJvej1BddH8OqTXZNE/KfbWAu8Q==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -2069,8 +2110,8 @@ packages:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
     engines: {node: '>=8'}
 
-  nx@23.0.1:
-    resolution: {integrity: sha512-HnK0Ke8FcPeVQffYm1oyzkLNn7khrI8SeDeC3iyLhw/UEMCB24hjI5JSs6Amlyeb0/GaeiuQuts8NkQKd/NpGA==}
+  nx@23.1.0:
+    resolution: {integrity: sha512-Z4hzIdRF6naDDpOTOazrJODmbU5D7slq94FR5q/dySW+evGxiOSFLO981VqDVvtNEvHPnEDh/C1wvFseWyvSrQ==}
     hasBin: true
     peerDependencies:
       '@swc-node/register': ^1.11.1
@@ -2148,8 +2189,8 @@ packages:
   pkg-types@2.3.1:
     resolution: {integrity: sha512-y+ichcgc2LrADuhLNAx8DFjVfgz91pRxfZdI3UDhxHvcVEZsenLO+7XaU5vOp0u/7V/wZ+plyuQxtrDlZJ+yeg==}
 
-  postcss@8.5.16:
-    resolution: {integrity: sha512-vuwillviilfKZsg0VGj5R/YwwcHx4SLsIOI/7K6mQkWx+l5cUHTjj5g0AasTBcyXsbfTgrwsUNmVUb5xVwyPwg==}
+  postcss@8.5.24:
+    resolution: {integrity: sha512-8RyVklq0owXUTa4xlpzu4l9AaVKIdQvAcOHZWaMh98HgySsUtxRVf/chRe3dsSLqb6i40BzGRzEUddRaI+9TSw==}
     engines: {node: ^10 || ^12 || >=14}
 
   proxy-from-env@2.1.0:
@@ -2229,8 +2270,8 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.7.4:
-    resolution: {integrity: sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==}
+  semver@7.8.4:
+    resolution: {integrity: sha512-rUCObTnP32Q08R2uuIrt7r9PlEonuTmtuXYcW6s5kjdlj3xbnwe+21yXptAUYcMAABLkYYTtnmzb3w3EDZfueA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -2523,18 +2564,18 @@ packages:
       vite:
         optional: true
 
-  vite-plugin-solid@2.11.12:
-    resolution: {integrity: sha512-FgjPcx2OwX9h6f28jli7A4bG7PP3te8uyakE5iqsmpq3Jqi1TWLgSroC9N6cMfGRU2zXsl4Q6ISvTr2VL0QHpA==}
+  vite-plugin-solid@2.11.14:
+    resolution: {integrity: sha512-7ZVBt8rpoyqmlwin2kRIUveaHoF6/kulY7gsnD+qFh4nS29V4OPAnw+ojoAspXIjObiL9o1xh9a/nTuYHm02Rw==}
     peerDependencies:
-      '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
+      '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.0.0 || ^7.0.0
       solid-js: ^1.7.2
-      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
     peerDependenciesMeta:
       '@testing-library/jest-dom':
         optional: true
 
-  vite@8.1.4:
-    resolution: {integrity: sha512-bTT9PsdWO+MQMNG9ZXIP/qM9wGh37DFxTV/sPq9cFpHr3w4jkgef032PkAL9jAqhk3Nz8NQw3O8n6/xFkqO4QQ==}
+  vite@8.1.5:
+    resolution: {integrity: sha512-7ULLwsCdYx/nRyrpiEwvqb5TFHrMVZyBt+rg/OAXT7rgj/z+DtTDyKFeLAdDkubDVDKD8jOsndmy7m55XcfUsw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -2744,7 +2785,7 @@ snapshots:
       '@babel/types': 7.29.7
       '@jridgewell/remapping': 2.3.5
       convert-source-map: 2.0.0
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
@@ -2796,7 +2837,7 @@ snapshots:
       '@babel/core': 7.29.7
       '@babel/helper-compilation-targets': 7.29.7
       '@babel/helper-plugin-utils': 7.29.7
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       lodash.debounce: 4.0.8
       resolve: 1.22.12
     transitivePeerDependencies:
@@ -3439,7 +3480,7 @@ snapshots:
       '@babel/parser': 7.29.7
       '@babel/template': 7.29.7
       '@babel/types': 7.29.7
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -3448,39 +3489,39 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@biomejs/biome@2.5.3':
+  '@biomejs/biome@2.5.6':
     optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 2.5.3
-      '@biomejs/cli-darwin-x64': 2.5.3
-      '@biomejs/cli-linux-arm64': 2.5.3
-      '@biomejs/cli-linux-arm64-musl': 2.5.3
-      '@biomejs/cli-linux-x64': 2.5.3
-      '@biomejs/cli-linux-x64-musl': 2.5.3
-      '@biomejs/cli-win32-arm64': 2.5.3
-      '@biomejs/cli-win32-x64': 2.5.3
+      '@biomejs/cli-darwin-arm64': 2.5.6
+      '@biomejs/cli-darwin-x64': 2.5.6
+      '@biomejs/cli-linux-arm64': 2.5.6
+      '@biomejs/cli-linux-arm64-musl': 2.5.6
+      '@biomejs/cli-linux-x64': 2.5.6
+      '@biomejs/cli-linux-x64-musl': 2.5.6
+      '@biomejs/cli-win32-arm64': 2.5.6
+      '@biomejs/cli-win32-x64': 2.5.6
 
-  '@biomejs/cli-darwin-arm64@2.5.3':
+  '@biomejs/cli-darwin-arm64@2.5.6':
     optional: true
 
-  '@biomejs/cli-darwin-x64@2.5.3':
+  '@biomejs/cli-darwin-x64@2.5.6':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@2.5.3':
+  '@biomejs/cli-linux-arm64-musl@2.5.6':
     optional: true
 
-  '@biomejs/cli-linux-arm64@2.5.3':
+  '@biomejs/cli-linux-arm64@2.5.6':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@2.5.3':
+  '@biomejs/cli-linux-x64-musl@2.5.6':
     optional: true
 
-  '@biomejs/cli-linux-x64@2.5.3':
+  '@biomejs/cli-linux-x64@2.5.6':
     optional: true
 
-  '@biomejs/cli-win32-arm64@2.5.3':
+  '@biomejs/cli-win32-arm64@2.5.6':
     optional: true
 
-  '@biomejs/cli-win32-x64@2.5.3':
+  '@biomejs/cli-win32-x64@2.5.6':
     optional: true
 
   '@bramus/specificity@2.4.2':
@@ -3618,18 +3659,19 @@ snapshots:
       '@tybys/wasm-util': 0.10.3
     optional: true
 
-  '@nx/devkit@23.0.1(nx@23.0.1)':
+  '@nx/devkit@23.1.0(nx@23.1.0)':
     dependencies:
       '@zkochan/js-yaml': 0.0.7
       ejs: 5.0.1
       enquirer: 2.3.6
       minimatch: 10.2.5
-      nx: 23.0.1
+      nx: 23.1.0
       semver: 7.8.5
       tslib: 2.8.1
+      yaml: 2.9.0
       yargs-parser: 21.1.1
 
-  '@nx/js@23.0.1(@babel/traverse@7.29.7)(nx@23.0.1)':
+  '@nx/js@23.1.0(@babel/traverse@7.29.7)(nx@23.1.0)':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/plugin-proposal-decorators': 7.29.7(@babel/core@7.29.7)
@@ -3638,8 +3680,8 @@ snapshots:
       '@babel/preset-env': 7.29.7(@babel/core@7.29.7)
       '@babel/preset-typescript': 7.29.7(@babel/core@7.29.7)
       '@babel/runtime': 7.29.7
-      '@nx/devkit': 23.0.1(nx@23.0.1)
-      '@nx/workspace': 23.0.1
+      '@nx/devkit': 23.1.0(nx@23.1.0)
+      '@nx/workspace': 23.1.0
       '@zkochan/js-yaml': 0.0.7
       babel-plugin-const-enum: 1.2.0(@babel/core@7.29.7)
       babel-plugin-macros: 3.1.0
@@ -3661,47 +3703,46 @@ snapshots:
       - '@babel/traverse'
       - '@swc-node/register'
       - '@swc/core'
-      - debug
       - nx
       - supports-color
 
-  '@nx/nx-darwin-arm64@23.0.1':
+  '@nx/nx-darwin-arm64@23.1.0':
     optional: true
 
-  '@nx/nx-darwin-x64@23.0.1':
+  '@nx/nx-darwin-x64@23.1.0':
     optional: true
 
-  '@nx/nx-freebsd-x64@23.0.1':
+  '@nx/nx-freebsd-x64@23.1.0':
     optional: true
 
-  '@nx/nx-linux-arm-gnueabihf@23.0.1':
+  '@nx/nx-linux-arm-gnueabihf@23.1.0':
     optional: true
 
-  '@nx/nx-linux-arm64-gnu@23.0.1':
+  '@nx/nx-linux-arm64-gnu@23.1.0':
     optional: true
 
-  '@nx/nx-linux-arm64-musl@23.0.1':
+  '@nx/nx-linux-arm64-musl@23.1.0':
     optional: true
 
-  '@nx/nx-linux-x64-gnu@23.0.1':
+  '@nx/nx-linux-x64-gnu@23.1.0':
     optional: true
 
-  '@nx/nx-linux-x64-musl@23.0.1':
+  '@nx/nx-linux-x64-musl@23.1.0':
     optional: true
 
-  '@nx/nx-win32-arm64-msvc@23.0.1':
+  '@nx/nx-win32-arm64-msvc@23.1.0':
     optional: true
 
-  '@nx/nx-win32-x64-msvc@23.0.1':
+  '@nx/nx-win32-x64-msvc@23.1.0':
     optional: true
 
-  '@nx/workspace@23.0.1':
+  '@nx/workspace@23.1.0':
     dependencies:
-      '@nx/devkit': 23.0.1(nx@23.0.1)
+      '@nx/devkit': 23.1.0(nx@23.1.0)
       '@zkochan/js-yaml': 0.0.7
       chalk: 4.1.2
       enquirer: 2.3.6
-      nx: 23.0.1
+      nx: 23.1.0
       picomatch: 4.0.4
       semver: 7.8.5
       tslib: 2.8.1
@@ -3709,9 +3750,44 @@ snapshots:
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
-      - debug
+
+  '@omnifield/baser-check@0.0.4':
+    dependencies:
+      '@omnifield/baser-contracts': 0.2.0
+      tslib: 2.8.1
+
+  '@omnifield/baser-cli@0.1.0(@nx/devkit@23.1.0(nx@23.1.0))':
+    dependencies:
+      '@omnifield/baser-check': 0.0.4
+      '@omnifield/baser-contracts': 0.2.0
+      '@omnifield/baser-materialize': 0.0.2(@nx/devkit@23.1.0(nx@23.1.0))
+      '@omnifield/baser-pack': 0.0.4
+      ejs: 5.0.1
+      tslib: 2.8.1
+      yaml: 2.9.0
+    transitivePeerDependencies:
+      - '@nx/devkit'
+
+  '@omnifield/baser-contracts@0.2.0':
+    dependencies:
+      tslib: 2.8.1
+
+  '@omnifield/baser-devbox@0.8.1': {}
+
+  '@omnifield/baser-materialize@0.0.2(@nx/devkit@23.1.0(nx@23.1.0))':
+    dependencies:
+      '@nx/devkit': 23.1.0(nx@23.1.0)
+      tslib: 2.8.1
+
+  '@omnifield/baser-pack@0.0.4':
+    dependencies:
+      '@omnifield/baser-check': 0.0.4
+      '@omnifield/baser-contracts': 0.2.0
+      tslib: 2.8.1
 
   '@omnifield/biome-preset@0.1.1': {}
+
+  '@omnifield/brainer-harness@0.2.0': {}
 
   '@omnifield/nx-preset@0.1.1': {}
 
@@ -3893,13 +3969,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.10(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))':
+  '@vitest/mocker@4.1.10(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.10
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.10':
     dependencies:
@@ -3980,6 +4056,12 @@ snapshots:
 
   address@2.0.3: {}
 
+  agent-base@6.0.2(supports-color@7.2.0):
+    dependencies:
+      debug: 4.4.3(supports-color@7.2.0)
+    transitivePeerDependencies:
+      - supports-color
+
   alien-signals@3.2.1: {}
 
   ansi-colors@4.1.3: {}
@@ -3996,13 +4078,15 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.16.0:
+  axios@1.16.1(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
-      follow-redirects: 1.16.0
+      follow-redirects: 1.16.0(debug@4.4.3(supports-color@7.2.0))
       form-data: 4.0.6
+      https-proxy-agent: 5.0.1(supports-color@7.2.0)
       proxy-from-env: 2.1.0
     transitivePeerDependencies:
       - debug
+      - supports-color
 
   babel-plugin-const-enum@1.2.0(@babel/core@7.29.7):
     dependencies:
@@ -4194,9 +4278,11 @@ snapshots:
     transitivePeerDependencies:
       - '@noble/hashes'
 
-  debug@4.4.3:
+  debug@4.4.3(supports-color@7.2.0):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 7.2.0
 
   decimal.js@10.6.0: {}
 
@@ -4295,7 +4381,9 @@ snapshots:
 
   flat@5.0.2: {}
 
-  follow-redirects@1.16.0: {}
+  follow-redirects@1.16.0(debug@4.4.3(supports-color@7.2.0)):
+    optionalDependencies:
+      debug: 4.4.3(supports-color@7.2.0)
 
   form-data@4.0.6:
     dependencies:
@@ -4355,6 +4443,13 @@ snapshots:
       - '@noble/hashes'
 
   html-entities@2.3.3: {}
+
+  https-proxy-agent@5.0.1(supports-color@7.2.0):
+    dependencies:
+      agent-base: 6.0.2(supports-color@7.2.0)
+      debug: 4.4.3(supports-color@7.2.0)
+    transitivePeerDependencies:
+      - supports-color
 
   husky@9.1.7: {}
 
@@ -4542,7 +4637,7 @@ snapshots:
 
   muggle-string@0.4.1: {}
 
-  nanoid@3.3.15: {}
+  nanoid@3.3.16: {}
 
   node-releases@2.0.51: {}
 
@@ -4550,7 +4645,7 @@ snapshots:
     dependencies:
       path-key: 3.1.1
 
-  nx@23.0.1:
+  nx@23.1.0:
     dependencies:
       '@emnapi/core': 1.4.5
       '@emnapi/runtime': 1.4.5
@@ -4560,12 +4655,13 @@ snapshots:
       '@tybys/wasm-util': 0.9.0
       '@yarnpkg/lockfile': 1.1.0
       '@zkochan/js-yaml': 0.0.7
+      agent-base: 6.0.2(supports-color@7.2.0)
       ansi-colors: 4.1.3
       ansi-regex: 5.0.1
       ansi-styles: 4.3.0
       argparse: 2.0.1
       asynckit: 0.4.0
-      axios: 1.16.0
+      axios: 1.16.1(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
       balanced-match: 4.0.3
       base64-js: 1.5.1
       bl: 4.1.0
@@ -4580,6 +4676,7 @@ snapshots:
       color-convert: 2.0.1
       color-name: 1.1.4
       combined-stream: 1.0.8
+      debug: 4.4.3(supports-color@7.2.0)
       defaults: 1.0.4
       define-lazy-prop: 2.0.0
       delayed-stream: 1.0.0
@@ -4598,7 +4695,7 @@ snapshots:
       escape-string-regexp: 1.0.5
       figures: 3.2.0
       flat: 5.0.2
-      follow-redirects: 1.16.0
+      follow-redirects: 1.16.0(debug@4.4.3(supports-color@7.2.0))
       form-data: 4.0.6
       fs-constants: 1.0.0
       function-bind: 1.1.2
@@ -4610,6 +4707,7 @@ snapshots:
       has-symbols: 1.1.0
       has-tostringtag: 1.0.2
       hasown: 2.0.4
+      https-proxy-agent: 5.0.1(supports-color@7.2.0)
       ieee754: 1.2.1
       ignore: 7.0.5
       inherits: 2.0.4
@@ -4629,6 +4727,7 @@ snapshots:
       mimic-fn: 2.1.0
       minimatch: 10.2.5
       minimist: 1.2.8
+      ms: 2.1.3
       npm-run-path: 4.0.1
       once: 1.4.0
       onetime: 5.1.2
@@ -4642,7 +4741,7 @@ snapshots:
       resolve.exports: 2.0.3
       restore-cursor: 3.1.0
       safe-buffer: 5.2.1
-      semver: 7.7.4
+      semver: 7.8.4
       signal-exit: 3.0.7
       smol-toml: 1.6.1
       string-width: 4.2.3
@@ -4664,18 +4763,16 @@ snapshots:
       yargs: 17.7.2
       yargs-parser: 21.1.1
     optionalDependencies:
-      '@nx/nx-darwin-arm64': 23.0.1
-      '@nx/nx-darwin-x64': 23.0.1
-      '@nx/nx-freebsd-x64': 23.0.1
-      '@nx/nx-linux-arm-gnueabihf': 23.0.1
-      '@nx/nx-linux-arm64-gnu': 23.0.1
-      '@nx/nx-linux-arm64-musl': 23.0.1
-      '@nx/nx-linux-x64-gnu': 23.0.1
-      '@nx/nx-linux-x64-musl': 23.0.1
-      '@nx/nx-win32-arm64-msvc': 23.0.1
-      '@nx/nx-win32-x64-msvc': 23.0.1
-    transitivePeerDependencies:
-      - debug
+      '@nx/nx-darwin-arm64': 23.1.0
+      '@nx/nx-darwin-x64': 23.1.0
+      '@nx/nx-freebsd-x64': 23.1.0
+      '@nx/nx-linux-arm-gnueabihf': 23.1.0
+      '@nx/nx-linux-arm64-gnu': 23.1.0
+      '@nx/nx-linux-arm64-musl': 23.1.0
+      '@nx/nx-linux-x64-gnu': 23.1.0
+      '@nx/nx-linux-x64-musl': 23.1.0
+      '@nx/nx-win32-arm64-msvc': 23.1.0
+      '@nx/nx-win32-x64-msvc': 23.1.0
 
   obug@2.1.3: {}
 
@@ -4752,9 +4849,9 @@ snapshots:
       exsolve: 1.1.0
       pathe: 2.0.3
 
-  postcss@8.5.16:
+  postcss@8.5.24:
     dependencies:
-      nanoid: 3.3.15
+      nanoid: 3.3.16
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -4842,7 +4939,7 @@ snapshots:
 
   semver@6.3.1: {}
 
-  semver@7.7.4: {}
+  semver@7.8.4: {}
 
   semver@7.8.5: {}
 
@@ -5049,12 +5146,12 @@ snapshots:
       unplugin: 2.3.11
       unplugin-utils: 0.3.2
 
-  unplugin-dts@1.0.3(@vue/language-core@3.1.8(typescript@5.9.3))(rolldown@1.1.5)(typescript@5.9.3)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0)):
+  unplugin-dts@1.0.3(@vue/language-core@3.1.8(typescript@5.9.3))(rolldown@1.1.5)(typescript@5.9.3)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0)):
     dependencies:
       '@rollup/pluginutils': 5.4.0
       '@volar/typescript': 2.4.28
       compare-versions: 6.1.1
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       kolorist: 1.8.0
       local-pkg: 1.2.1
       magic-string: 0.30.21
@@ -5063,7 +5160,7 @@ snapshots:
     optionalDependencies:
       '@vue/language-core': 3.1.8(typescript@5.9.3)
       rolldown: 1.1.5
-      vite: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -5087,11 +5184,11 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite-plugin-dts@5.0.3(@vue/language-core@3.1.8(typescript@5.9.3))(rolldown@1.1.5)(typescript@5.9.3)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0)):
+  vite-plugin-dts@5.0.3(@vue/language-core@3.1.8(typescript@5.9.3))(rolldown@1.1.5)(typescript@5.9.3)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0)):
     dependencies:
-      unplugin-dts: 1.0.3(@vue/language-core@3.1.8(typescript@5.9.3))(rolldown@1.1.5)(typescript@5.9.3)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+      unplugin-dts: 1.0.3(@vue/language-core@3.1.8(typescript@5.9.3))(rolldown@1.1.5)(typescript@5.9.3)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
     optionalDependencies:
-      vite: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
     transitivePeerDependencies:
       - '@rspack/core'
       - '@vue/language-core'
@@ -5101,7 +5198,7 @@ snapshots:
       - typescript
       - webpack
 
-  vite-plugin-solid@2.11.12(solid-js@1.9.14)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0)):
+  vite-plugin-solid@2.11.14(solid-js@1.9.14)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0)):
     dependencies:
       '@babel/core': 7.29.7
       '@types/babel__core': 7.20.5
@@ -5109,16 +5206,16 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.9.14
       solid-refresh: 0.6.3(solid-js@1.9.14)
-      vite: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
-      vitefu: 1.1.3(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+      vite: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
+      vitefu: 1.1.3(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
     transitivePeerDependencies:
       - supports-color
 
-  vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0):
+  vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.5
-      postcss: 8.5.16
+      postcss: 8.5.24
       rolldown: 1.1.5
       tinyglobby: 0.2.17
     optionalDependencies:
@@ -5126,14 +5223,14 @@ snapshots:
       fsevents: 2.3.3
       yaml: 2.9.0
 
-  vitefu@1.1.3(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0)):
+  vitefu@1.1.3(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0)):
     optionalDependencies:
-      vite: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
 
-  vitest@4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0)):
+  vitest@4.1.10(@types/node@25.9.0)(jsdom@29.1.1)(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.10
-      '@vitest/mocker': 4.1.10(vite@8.1.4(@types/node@25.9.0)(yaml@2.9.0))
+      '@vitest/mocker': 4.1.10(vite@8.1.5(@types/node@25.9.0)(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.10
       '@vitest/runner': 4.1.10
       '@vitest/snapshot': 4.1.10
@@ -5150,7 +5247,7 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.1.4(@types/node@25.9.0)(yaml@2.9.0)
+      vite: 8.1.5(@types/node@25.9.0)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 25.9.0

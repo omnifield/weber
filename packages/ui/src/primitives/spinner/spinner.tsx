@@ -1,4 +1,4 @@
-import { createStyle } from '@weber/style';
+import { createStyle } from '@omnifield/weber-style';
 import { mergeProps, splitProps } from 'solid-js';
 import type { ISpinnerProps } from './interfaces';
 import { spinnerCva } from './variants';

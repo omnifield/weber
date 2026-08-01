@@ -7,10 +7,10 @@ export default defineConfig({
   resolve: {
     alias: {
       // workspace-deps напрямую в src — тесты не зависят от порядка nx build.
-      '@weber/kernel': resolve(__dirname, '../kernel/src/index.ts'),
-      '@weber/ui-proxy': resolve(__dirname, '../ui-proxy/src/index.ts'),
-      '@weber/logic': resolve(__dirname, '../logic/src/index.ts'),
-      '@weber/state': resolve(__dirname, '../../packages/state/src/index.ts'),
+      '@omnifield/weber-kernel': resolve(__dirname, '../kernel/src/index.ts'),
+      '@omnifield/weber-ui-proxy': resolve(__dirname, '../ui-proxy/src/index.ts'),
+      '@omnifield/weber-logic': resolve(__dirname, '../logic/src/index.ts'),
+      '@omnifield/weber-state': resolve(__dirname, '../../packages/state/src/index.ts'),
     },
     dedupe: ['solid-js', 'solid-js/web', 'solid-js/store'],
   },

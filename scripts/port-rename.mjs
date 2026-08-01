@@ -13,8 +13,8 @@ import { extname, join } from 'node:path';
 import { argv, exit } from 'node:process';
 
 const BASE_MAP = [
-  ['@capsuletech/', '@weber/'],
-  ['@capsuletech\\/', '@weber\\/'], // regex-литералы (external-матчеры и т.п.)
+  ['@capsuletech/', '@omnifield/weber-'],
+  ['@capsuletech\\/', '@omnifield\\/weber-'], // regex-литералы (external-матчеры и т.п.)
   ['capsule:', 'weber:'], // префикс vite-плагинов (напр. capsule:emit-dist-package-json)
 ];
 

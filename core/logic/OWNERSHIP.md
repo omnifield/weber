@@ -1,4 +1,4 @@
-# OWNERSHIP — @weber/logic
+# OWNERSHIP — @omnifield/weber-logic
 
 Второй модуль кора (ADR-0001): логический слой — schema-driven dispatch,
 lifecycle, программный emit, tag-запросы. Порт капсульных controller-proxy.ts +
@@ -7,7 +7,7 @@ logic-wrapper.tsx + web-state helpers/tag-registry, распиленных по 
 ## Контракт модуля
 
 - **Вход** — `ILogicModuleConfig`: `adapter` (state-начинка по порту kernel;
-  дефолт экосистемы `@weber/state`) · `services` (состав per-kind — за сборкой:
+  дефолт экосистемы `@omnifield/weber-state`) · `services` (состав per-kind — за сборкой:
   router/api/…; модуль о них не знает) · `compositeWrap` (связка с bindEvents
   ui-proxy — при сборке, без прямого dep между модулями) · `trace` (слот; у
   предка был жёсткий импорт web-profiler) · `aliases`.

@@ -1,5 +1,5 @@
-import type { ICompositeWrap, ICtx, IStateAdapter } from '@weber/kernel';
-import { CompositeWrapContext, Context, useCompositeWrap, useCtx } from '@weber/kernel';
+import type { ICompositeWrap, ICtx, IStateAdapter } from '@omnifield/weber-kernel';
+import { CompositeWrapContext, Context, useCompositeWrap, useCtx } from '@omnifield/weber-kernel';
 import { createEffect, createUniqueId, onCleanup, Suspense } from 'solid-js';
 import { ControllerProxy } from './controller-proxy';
 import { createEmit } from './emit';
@@ -18,7 +18,7 @@ import { createStoreFacade } from './store-facade';
 /**
  * Конфиг logic-модуля — декларированный ВХОД (ADR-0001). Всё, что у предка
  * было жёсткой сцепкой монолита, здесь — инъекция:
- *  - adapter: state-начинка (порт kernel; дефолт экосистемы — @weber/state);
+ *  - adapter: state-начинка (порт kernel; дефолт экосистемы — @omnifield/weber-state);
  *  - services: состав services для фабрик схем — за сборкой (router/api/…),
  *    модуль о них не знает;
  *  - compositeWrap: связка с ui-proxy (bindEvents) — задаётся при сборке,

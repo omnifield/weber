@@ -1,4 +1,4 @@
-# OWNERSHIP — @weber/state
+# OWNERSHIP — @omnifield/weber-state
 
 Solid-native state-адаптер — ДЕФОЛТНАЯ начинка FSM/store-порта kernel'а
 (ADR-0003: честный контракт кора = реактивный store + goto; XState — будущий

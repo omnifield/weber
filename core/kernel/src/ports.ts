@@ -4,7 +4,7 @@
  *
  * Store/FSM-порт: поверхность в объёме фактического потребления модулями
  * (ui-proxy: реестр компонентов; logic: мутации + FSM). Реализация — пакеты-
- * адаптеры (`@weber/state` solid-native = дефолт; xstate — опция). Протокол
+ * адаптеры (`@omnifield/weber-state` solid-native = дефолт; xstate — опция). Протокол
  * ЗАКРЫТ и мал: user-domain живёт в `update()`-данных и хендлерах, удобства
  * (pick/values/patch) — в logic-модуле ПОВЕРХ порта, не здесь. Так «вагон
  * документов» бриджа-предка не растёт по построению.
@@ -98,7 +98,7 @@ export interface ILogicInstance<TCtx = unknown> {
 }
 
 /**
- * State-адаптер — контракт пакета-начинки (`@weber/state` и альтернативы).
+ * State-адаптер — контракт пакета-начинки (`@omnifield/weber-state` и альтернативы).
  * `create` ОБЯЗАН вызываться внутри Solid owner-скоупа (реактивность/cleanup).
  */
 export interface IStateAdapter {
