@@ -23,6 +23,7 @@
     "@omnifield/baser-cli": "^0.1.0",
     "@omnifield/baser-devbox": "^0.8.1",
     "@omnifield/biome-preset": "^0.1.1",
+    "@omnifield/brainer-harness": "0.2.0",
     "@omnifield/nx-preset": "^0.1.1",
     "husky": "^9.1.7",
     "nx": "^23.0.1",

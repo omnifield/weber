@@ -4,11 +4,11 @@
 //   - CLI:    `node scope-resolve.mjs <scope>` → stdout JSON, exit 0 (OK) | 1 (unknown).
 //   - import: `import { resolveScope } from './scope-resolve.mjs'` (грузит конфиг из cwd).
 //
-// scope = leaf-имя зоны (либо 'main' = architect). Первоисточник зон — конфиг (kb:BRAIN-3).
+// scope = leaf-имя зоны (либо 'main' = architect). Первоисточник зон — конфиг (kb:BRAIN2-12).
 
-import { argv } from 'node:process';
-import { fileURLToPath } from 'node:url';
-import { knownScopes, loadConfig, resolveScope as resolveWithConfig } from './harness-config.mjs';
+import { argv } from "node:process";
+import { fileURLToPath } from "node:url";
+import { knownScopes, loadConfig, resolveScope as resolveWithConfig } from "./harness-config.mjs";
 
 /** Резолвит scope, читая зоны из конфига (по умолчанию — из cwd). */
 export function resolveScope(scope, cwd = process.cwd()) {
@@ -20,7 +20,7 @@ if (fileURLToPath(import.meta.url) === argv[1]) {
   const config = loadConfig(process.cwd());
   const resolved = resolveWithConfig(scope, config);
   if (!resolved) {
-    const list = knownScopes(config).join(', ');
+    const list = knownScopes(config).join(", ");
     process.stderr.write(`ERROR: unknown scope "${scope}". Доступные: ${list}\n`);
     process.exit(1);
   }

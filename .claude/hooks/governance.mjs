@@ -18,14 +18,14 @@
 //   stdout = JSON { hookSpecificOutput:{ hookEventName, permissionDecision, permissionDecisionReason } }
 //   exit 0 всегда; FAIL-OPEN на внутренней ошибке (правку не ломаем из-за бага гейта).
 
-import { existsSync, readFileSync, realpathSync } from 'node:fs';
-import { basename, dirname, isAbsolute, join, relative, resolve } from 'node:path';
-import { argv } from 'node:process';
-import { fileURLToPath } from 'node:url';
-import { loadConfig, roleOf, zonePaths } from './harness-config.mjs';
+import { existsSync, readFileSync, realpathSync } from "node:fs";
+import { basename, dirname, isAbsolute, join, relative, resolve } from "node:path";
+import { argv } from "node:process";
+import { fileURLToPath } from "node:url";
+import { loadConfig, roleOf, zonePaths } from "./harness-config.mjs";
 
 // Файло-мутирующие тулы Claude Code (MultiEdit — на случай старых сборок).
-const EDIT_TOOLS = new Set(['Edit', 'Write', 'NotebookEdit', 'MultiEdit']);
+const EDIT_TOOLS = new Set(["Edit", "Write", "NotebookEdit", "MultiEdit"]);
 
 export function isEditTool(toolName) {
   return EDIT_TOOLS.has(toolName);
@@ -43,7 +43,7 @@ export function targetPath(input) {
  */
 export function ownedRoots(scope, config, repoRoot) {
   const role = roleOf(scope);
-  if (role === 'architect' || role === 'layer') return { unrestricted: true, roots: [] };
+  if (role === "architect" || role === "layer") return { unrestricted: true, roots: [] };
   // owner: зона должна резолвиться и иметь пути
   const zone = config?.zones?.[scope];
   const roots = zonePaths(zone).map((p) => resolve(repoRoot, p));
@@ -54,7 +54,7 @@ export function ownedRoots(scope, config, repoRoot) {
 export function within(targetAbs, root) {
   if (targetAbs === root) return true;
   const rel = relative(root, targetAbs);
-  return rel !== '' && !rel.startsWith('..') && !isAbsolute(rel);
+  return rel !== "" && !rel.startsWith("..") && !isAbsolute(rel);
 }
 
 /**
@@ -93,7 +93,7 @@ export function editViolation({ scope, config, repoRoot, rawPath }) {
     return `scope "${scope}" не резолвится в зону с путями — boundary неизвестна`;
   }
   const rel = relative(repoRoot, target) || target;
-  return `файл \`${rel}\` вне зоны owner-${scope} (${owned.roots.map((r) => `${relative(repoRoot, r)}/`).join(', ')})`;
+  return `файл \`${rel}\` вне зоны owner-${scope} (${owned.roots.map((r) => `${relative(repoRoot, r)}/`).join(", ")})`;
 }
 
 function isMainSession(input) {
@@ -101,7 +101,7 @@ function isMainSession(input) {
   if (!sessionId) return false;
   const cwd = input.cwd || process.cwd();
   try {
-    const ids = readFileSync(join(cwd, '.claude', '.main-session-id'), 'utf8')
+    const ids = readFileSync(join(cwd, ".claude", ".main-session-id"), "utf8")
       .split(/\r?\n/)
       .map((l) => l.trim())
       .filter(Boolean);
@@ -114,7 +114,7 @@ function isMainSession(input) {
 function allow() {
   process.stdout.write(
     JSON.stringify({
-      hookSpecificOutput: { hookEventName: 'PreToolUse', permissionDecision: 'allow' },
+      hookSpecificOutput: { hookEventName: "PreToolUse", permissionDecision: "allow" },
     }),
   );
   process.exit(0);
@@ -131,12 +131,12 @@ function deny(reason) {
     ``,
     `Действие: STOP. Не обходи (симлинк / относительный путь — гейт резолвит реальный путь).`,
     `Эскалация ВВЕРХ: верни state architect с описанием, что и зачем нужно за границей.`,
-  ].join('\n');
+  ].join("\n");
   process.stdout.write(
     JSON.stringify({
       hookSpecificOutput: {
-        hookEventName: 'PreToolUse',
-        permissionDecision: 'deny',
+        hookEventName: "PreToolUse",
+        permissionDecision: "deny",
         permissionDecisionReason: msg,
       },
     }),
@@ -147,7 +147,7 @@ function deny(reason) {
 function main() {
   let input;
   try {
-    input = JSON.parse(readFileSync(0, 'utf8').replace(/^﻿/, ''));
+    input = JSON.parse(readFileSync(0, "utf8").replace(/^﻿/, ""));
   } catch {
     return allow();
   }
