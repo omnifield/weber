@@ -31,7 +31,7 @@
     "vite": "^8.0.0"
   },
   "devDependencies": {
-    "@types/node": "25.9.0",
+    "@types/node": "26.4.1",
     "@weber/lib-builder": "workspace:*",
     "vite": "^8.0.13",
     "vitest": "~4.1.0"
