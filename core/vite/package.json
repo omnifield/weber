@@ -24,7 +24,7 @@
     "lint": "biome check src"
   },
   "dependencies": {
-    "unplugin-auto-import": "^20.2.0",
+    "unplugin-auto-import": "^21.1.0",
     "vite-plugin-solid": "^2.11.12"
   },
   "peerDependencies": {
