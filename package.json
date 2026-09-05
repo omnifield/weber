@@ -18,7 +18,7 @@
     "hygiene": "sherif"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.3",
+    "@biomejs/biome": "^2.5.11",
     "@nx/js": "^23.0.1",
     "@omnifield/biome-preset": "^0.1.1",
     "@omnifield/nx-preset": "^0.1.1",
