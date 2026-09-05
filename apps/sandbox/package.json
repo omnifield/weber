@@ -18,7 +18,7 @@
     "@weber/style": "workspace:*",
     "@weber/ui": "workspace:*",
     "solid-js": "^1.9.12",
-    "zod": "^3.23.8"
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@weber/vite": "workspace:*",
